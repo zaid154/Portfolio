@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    background: black;
+    color: white;
+}
+
+/* ---------------- NAV ---------------- */
+
+nav {
+    width: 80%;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0 30px;
+    background: rgb(41, 41, 41);
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: rgb(0, 162, 255);
+}
+
+.logo {
+    width: 22px;
+    height: 22px;
+    margin-left: 15px;
+}
+
+/* ---------------- SKILLS SECTION ---------------- */
+
+.skills {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.intro {
+    width: 60%;
+    margin: 0 auto 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/* ------------ BOX CONTAINER (NEW) ------------ */
+
+.box-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;   /* allows 3 per row */
+    gap: 30px;
+}
+
+/* ---------------- BOX ---------------- */
+
+.box {
+    width: 25%;
+    height: 150px;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: 5px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    color: black;
+}
+
+.box-container :hover{
+    background: rgb(134, 252, 95);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+

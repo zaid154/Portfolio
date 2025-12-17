@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: black;
+    overflow-x: hidden;
+}
+
+nav {
+    background: rgb(41, 41, 41);
+    width: 80%;
+    min-height: 50px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    color: rgb(0, 162, 255);
+}
+
+nav section {
+    display: flex;
+    gap: 12px;
+}
+
+.logo {
+    width: 22px;
+    height: 22px;
+}
+
+.case-studies {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.intro {
+    width: 60%;
+    margin: 0 auto 40px;
+    color: white;
+    line-height: 1.6;
+}
+
+.Project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.Project img {
+    width: 45%;
+    border-radius: 8px;
+}
+
+.case-text {
+    width: 45%;
+    text-align: left;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+p {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+button {
+    background: black;
+    color: white;
+    border-radius: 6px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: greenyellow;
+    color: black;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        width: 95%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav a {
+        font-size: 14px;
+        margin-right: 12px;
+    }
+
+    nav section {
+        width: 100%;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .case-studies {
+        width: 95%;
+        padding: 25px 0;
+    }
+
+    .intro {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    .Project {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .Project img {
+        width: 100%;
+    }
+
+    .case-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h2 {
+        font-size: 26px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}

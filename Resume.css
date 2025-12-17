@@ -1,0 +1,56 @@
+
+/* MAIN */
+.main {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+/* PDF VIEWER */
+object {
+    width: 80%;
+    height: 800px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 8px;
+}
+
+nav {
+    background: rgb(41, 41, 41);
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    margin: 0 auto;      
+    margin-top: 0px;
+    border-radius: 6px;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 25px;
+}
+
+nav a:hover {
+    color: rgb(0, 162, 255);
+}
+
+
+.logo {
+    height: 22px;
+    width: 22px;
+    margin-left: 15px;
+}
+
+
+
+body {
+    background: black;
+    margin: 0;
+}
+
