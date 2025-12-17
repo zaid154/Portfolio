@@ -99,3 +99,16 @@ object {
         border-radius: 6px;
     }
 }
+iframe {
+    width: 80%;
+    height: 800px;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    iframe {
+        width: 100%;
+        height: 500px;
+    }
+}
