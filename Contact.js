@@ -8,7 +8,7 @@ let mobile = document.querySelector('#mobile');
 const form = document.getElementById("contactForm");
 const successMsg = document.getElementById("successMsg");
 
-/* ---------- ICON LINKS ---------- */
+
 email.addEventListener('click', () => {
     window.open("mailto:zaidm1323@gmail.com");
 });
@@ -21,12 +21,11 @@ git.addEventListener('click', () => {
     window.open("https://github.com/zaid-bca", "_blank");
 });
 
-/* ---------- MOBILE NUMBER VALIDATION ---------- */
+
 mobile.addEventListener("input", () => {
     mobile.value = mobile.value.replace(/[^0-9]/g, "");
 });
 
-/* ---------- FORM SUBMISSION ---------- */
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -46,10 +45,17 @@ form.addEventListener("submit", async function (e) {
             }
         });
 
-        if (response.ok) {
-            form.reset();
-            successMsg.style.display = "block";
-        } else {
+if (response.ok) {
+    form.reset();
+
+    successMsg.classList.add("show");
+    
+    setTimeout(() => {
+        successMsg.classList.remove("show");
+    }, 10000);
+}
+
+        else {
             alert("Something went wrong. Please try again.");
         }
     } catch (error) {
