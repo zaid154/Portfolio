@@ -104,7 +104,7 @@ h2 {
     transition: all 0.3s ease;
 }
 
-.box:hover {
+.box:hover { 
     background: rgb(95, 229, 247);
     transform: scale(1.05);
     cursor: pointer;
