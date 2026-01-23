@@ -1,61 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link rel="icon" type="image/png" href="cropped_circle_image.png">
+    <link rel="icon" type="image/png" href="./Picture/Logo_tab.png" />
 
-    <link rel="stylesheet" href="Contact.css">
+    <link rel="stylesheet" href="Contact.css" />
+  </head>
 
-
-</head>
-
-<body>
-
+  <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="Skills.html">Skills</a>
-        <a href="Project.html">Project</a>
-        <a href="Contact.html">Contact</a>
-        <a href="Resume.html">Resume</a>
+      <a href="index.html">Home</a>
+      <a href="Skills.html">Skills</a>
+      <a href="Project.html">Project</a>
+      <a href="Contact.html">Contact</a>
+      <a href="Resume.html">Resume</a>
 
-        <section>
-            <img src="./Picture/git_logo.png" alt="" class="logo" id="git">
-            <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link">
-            <img src="./Picture/email_logo.png" alt="" class="logo" id="email_img">
-        </section>
+      <section>
+        <img src="./Picture/git_logo.png" alt="" class="logo" id="git" />
+        <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link" />
+        <img
+          src="./Picture/email_logo.png"
+          alt=""
+          class="logo"
+          id="email_img"
+        />
+      </section>
     </nav>
 
     <h1>Get In Touch</h1>
 
     <div class="main">
+      <form
+        id="contactForm"
+        action="https://formspree.io/f/xyzrqpae"
+        method="POST"
+      >
+        <label>Email :</label>
+        <input
+          type="email"
+          id="enter_email"
+          name="email"
+          placeholder="Email Address"
+          required
+        />
+        <br />
+        <label>Mobile Number :</label>
+        <input
+          type="text"
+          id="mobile"
+          name="mobile"
+          placeholder="Mobile Number"
+          maxlength="10"
+          required
+        />
+        <br />
+        <label>Message :</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Your message..."
+          required
+        ></textarea>
+        <br />
 
-
-        <form id="contactForm" action="https://formspree.io/f/xyzrqpae" method="POST">
-
-            <label>Email :</label>
-            <input type="email" id="enter_email" name="email" placeholder="Email Address" required>
-            <br>
-            <label>Mobile Number :</label>
-            <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" maxlength="10" required>
-            <br>
-            <label>Message :</label>
-            <textarea id="message" name="message" placeholder="Your message..." required></textarea>
-            <br>
-
-            <button type="submit" class="submit">Submit</button>
-            <br>
-            <p id="successMsg">Thank you!
-                Your message has been sent.</p>
-        </form>
-
-
-
+        <button type="submit" class="submit">Submit</button>
+        <br />
+        <p id="successMsg">Thank you! Your message has been sent.</p>
+      </form>
     </div>
 
     <script src="Contact.js"></script>
-</body>
-
+  </body>
 </html>
