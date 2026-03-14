@@ -3,7 +3,211 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Project.css" />
+    <style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: black;
+    overflow-x: hidden;
+}
+
+nav {
+    background: rgb(41, 41, 41);
+    width: 80%;
+    min-height: 50px;
+    margin: auto;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    color: rgb(0, 162, 255);
+}
+
+nav section {
+    display: flex;
+    gap: 12px;
+}
+
+.logo {
+    width: 22px;
+    height: 22px;
+}
+
+.case-studies {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.intro {
+    width: 60%;
+    margin: 0 auto 40px;
+    color: white;
+    line-height: 1.6;
+}
+
+.Project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.Project img {
+    width: 45%;
+    border-radius: 8px;
+}
+
+.case-text {
+    width: 45%;
+    text-align: left;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    
+}
+
+p {
+    
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    margin-bottom: 10px;
+
+}
+
+button {
+    background: black;
+    color: white;
+    border-radius: 6px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: greenyellow;
+    color: black;
+    transform: scale(1.05);
+}
+
+.divider {
+  width: 80%;
+  height: 2px;
+  margin: 50px auto;
+  background: linear-gradient(
+    to right,
+    transparent,
+    white,
+    transparent
+  );
+  opacity: 0.6;
+}
+
+
+@media (max-width: 768px) {
+
+    nav {
+        width: 95%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav a {
+        font-size: 14px;
+        margin-right: 12px;
+    }
+
+    nav section {
+        width: 100%;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .case-studies {
+        width: 95%;
+        padding: 25px 0;
+    }
+
+    .intro {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    .Project {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .Project img {
+        width: 100%;
+    }
+
+    .case-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h2 {
+        font-size: 26px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+}
+</style>
     <link rel="icon" type="image/png" href="./Picture/Logo_tab.png" />
     <title>Portfolio</title>
   </head>
@@ -27,132 +231,6 @@
         />
       </section>
     </nav>
-
-    <!-- <h1>Case Studies</h1>
-
-    <p class="introduction">These case studies showcase how I approach a project from planning to deployment.
-        I focus on building clean, user-friendly interfaces with strong development logic.
-        Each project highlights the problems I solved and the techniques I used.
-        Together, they represent my skills in real-world web application development.</p>
-
-    <div class="superdiv">
-        <div class="div1">
-            <div class="div1_1">
-
-                <h3>E-Commerce Login System with Credential Validation</h3>
-
-                <p>This project is a simple E-Commerce Login System where users enter their email and password, and
-                    based on correct credentials, they are redirected to a static shopping page. I designed the UI using
-                    HTML and CSS, and implemented the login validation using JavaScript. The goal was to create a smooth
-                    and realistic login experience for an e-commerce website, even without a backend. The system checks
-                    user inputs, displays error messages for incorrect credentials, and redirects only when the login is
-                    successful.
-                    <br><br>
-                    The shopping page is a fully static front-end layout that represents a basic product display
-                    section. Although it does not include cart functionality, it demonstrates page navigation flow and
-                    how a user moves into the shopping environment after authentication. This project helped me
-                    understand front-end validation, user flow, and clean UI structuring, and it showcases my ability to
-                    build functional, real-world components using simple web technologies.
-                </p>
-            </div>
-            <div class="div1_2">
-                <img src="download.png" alt="">
-            </div>
-        </div>
-
-        <div class="div2">
-            <div class="div2_1"><img src="download.png" alt=""></div>
-            <div class="div2_2">
-
-                <h3>Interactive Proposal Page</h3>
-
-                <p>
-                    <br>
-                    This project is a small but meaningful interactive webpage that I created using HTML, CSS, and
-                    JavaScript. My idea was to design a soft and emotional letter-style page where the user reads a
-                    heartfelt message and then reaches a proposal section at the end. I focused on simple colors, smooth
-                    animations, and a clean layout so the page feels warm and personal. Every part of the design—from
-                    the background to the text spacing—was made to look comfortable and easy to read.
-                    <br><br>
-                    The main highlight of the project is the interactive buttons. When the user clicks “Yes,” small
-                    floating hearts appear, and the message changes to something sweet. When they click “No,” the button
-                    keeps giving funny and convincing replies. This made the page more fun and engaging. Through this
-                    project, I improved my skills in DOM manipulation, event handling, and creating custom animations.
-                    Overall, it’s a creative front-end project that shows my ability to combine design and JavaScript
-                    interaction in a simple, emotional, and user-friendly way.
-                </p>
-            </div>
-        </div>
-
-        <div class="div3">
-            <div class="div3_1">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis adipisci reiciendis eos voluptate
-                    dolor veritatis commodi suscipit deserunt ducimus odit asperiores et officiis ab doloribus,
-                    dignissimos veniam, excepturi quos voluptatum.
-                    Ea error vitae aperiam corporis facere dicta soluta, facilis eveniet tenetur vel tempora amet ut
-                    quos molestiae recusandae minus deleniti deserunt expedita. Atque eaque excepturi numquam hic
-                    quisquam suscipit quam!
-                    Distinctio eveniet reprehenderit ratione magnam saepe aliquid non, itaque doloribus doloremque eos
-                    quibusdam aperiam praesentium deserunt soluta autem tempore ipsam sapiente veniam tenetur! Eius cum
-                    omnis corporis at, laboriosam repudiandae.
-                    Atque unde eaque inventore dolorum! Quis doloremque impedit officia eum, illo iure deserunt fugit
-                    aut distinctio, animi minus rem ea cum eveniet quam consequatur aperiam perferendis quaerat tempora
-                    dicta magnam.
-                    Perspiciatis distinctio sed iusto sint libero nesciunt consectetur quas ullam, id modi deleniti,
-                    doloremque quia excepturi ipsum dicta assumenda eum. Deleniti corrupti vitae repudiandae enim quo
-                    doloribus reprehenderit, nobis dolorum.</p>
-            </div>
-            <div class="div3_2"><img src="download.png" alt=""></div>
-        </div>
-
-
-        <div class="div4">
-            <div class="div4_1"><img src="download.png" alt=""></div>
-            <div class="div4_2">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis adipisci reiciendis eos voluptate
-                    dolor veritatis commodi suscipit deserunt ducimus odit asperiores et officiis ab doloribus,
-                    dignissimos veniam, excepturi quos voluptatum.
-                    Ea error vitae aperiam corporis facere dicta soluta, facilis eveniet tenetur vel tempora amet ut
-                    quos molestiae recusandae minus deleniti deserunt expedita. Atque eaque excepturi numquam hic
-                    quisquam suscipit quam!
-                    Distinctio eveniet reprehenderit ratione magnam saepe aliquid non, itaque doloribus doloremque eos
-                    quibusdam aperiam praesentium deserunt soluta autem tempore ipsam sapiente veniam tenetur! Eius cum
-                    omnis corporis at, laboriosam repudiandae.
-                    Atque unde eaque inventore dolorum! Quis doloremque impedit officia eum, illo iure deserunt fugit
-                    aut distinctio, animi minus rem ea cum eveniet quam consequatur aperiam perferendis quaerat tempora
-                    dicta magnam.
-                    Perspiciatis distinctio sed iusto sint libero nesciunt consectetur quas ullam, id modi deleniti,
-                    doloremque quia excepturi ipsum dicta assumenda eum. Deleniti corrupti vitae repudiandae enim quo
-                    doloribus reprehenderit, nobis dolorum.</p>
-            </div>
-        </div>
-        <div class="div5">
-            <div class="div5_1">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis adipisci reiciendis eos voluptate
-                    dolor veritatis commodi suscipit deserunt ducimus odit asperiores et officiis ab doloribus,
-                    dignissimos veniam, excepturi quos voluptatum.
-                    Ea error vitae aperiam corporis facere dicta soluta, facilis eveniet tenetur vel tempora amet ut
-                    quos molestiae recusandae minus deleniti deserunt expedita. Atque eaque excepturi numquam hic
-                    quisquam suscipit quam!
-                    Distinctio eveniet reprehenderit ratione magnam saepe aliquid non, itaque doloribus doloremque eos
-                    quibusdam aperiam praesentium deserunt soluta autem tempore ipsam sapiente veniam tenetur! Eius cum
-                    omnis corporis at, laboriosam repudiandae.
-                    Atque unde eaque inventore dolorum! Quis doloremque impedit officia eum, illo iure deserunt fugit
-                    aut distinctio, animi minus rem ea cum eveniet quam consequatur aperiam perferendis quaerat tempora
-                    dicta magnam.
-                    Perspiciatis distinctio sed iusto sint libero nesciunt consectetur quas ullam, id modi deleniti,
-                    doloremque quia excepturi ipsum dicta assumenda eum. Deleniti corrupti vitae repudiandae enim quo
-                    doloribus reprehenderit, nobis dolorum.</p>
-            </div>
-            <div class="div5_2">
-                <img src="download.png" alt="">
-            </div>
-        </div>
-
-
-    </div> -->
-    <!-- Case Studies Section -->
-
     <section class="case-studies">
       <h2>Projects</h2>
 
@@ -332,6 +410,21 @@
       </div>
     </section>
 
-    <script src="Project.js"></script>
+    <script>let email = document.querySelector('#email_img');
+let link  = document.querySelector('#link');
+let git   = document.querySelector('#git');
+
+email.addEventListener('click', () => {
+    window.open("mailto:zaidm1323@gmail.com")
+});
+
+link.addEventListener('click', () => {
+    window.open("https://www.linkedin.com/in/mohd-zaid-794090231")
+});
+
+git.addEventListener('click', () => {
+    window.open("https://github.com/zaid-bca","_blank")
+});
+</script>
   </body>
 </html>
