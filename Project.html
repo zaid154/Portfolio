@@ -1,430 +1,407 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    margin: 0;
-    background: black;
-    overflow-x: hidden;
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-nav {
-    background: rgb(41, 41, 41);
-    width: 80%;
-    min-height: 50px;
-    margin: auto;
-    padding: 10px 20px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    row-gap: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    margin-right: 20px;
-    white-space: nowrap;
-}
-
-nav a:hover {
-    color: rgb(0, 162, 255);
-}
-
-nav section {
-    display: flex;
-    gap: 12px;
-}
-
-.logo {
-    width: 22px;
-    height: 22px;
-}
-
-.case-studies {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding: 40px 0;
-}
-
-h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.intro {
-    width: 60%;
-    margin: 0 auto 40px;
-    color: white;
-    line-height: 1.6;
-}
-
-.Project {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 60px;
-    color: white;
-    border-radius: 5px;
-}
-
-
-.Project img {
-    width: 45%;
-    border-radius: 8px;
-}
-
-.case-text {
-    width: 45%;
-    text-align: left;
-}
-
-h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    
-}
-
-p {
-    
-    margin-bottom: 20px;
-}
-
-.tag {
-    display: inline-block;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    margin-bottom: 10px;
-
-}
-
-button {
-    background: black;
-    color: white;
-    border-radius: 6px;
-    border: 2px solid white;
-    cursor: pointer;
-    transition: 0.3s ease;
-    padding: 12px 24px;
-    font-size: 16px;
-}
-
-button:hover {
-    background: greenyellow;
-    color: black;
-    transform: scale(1.05);
-}
-
-.divider {
-  width: 80%;
-  height: 2px;
-  margin: 50px auto;
-  background: linear-gradient(
-    to right,
-    transparent,
-    white,
-    transparent
-  );
-  opacity: 0.6;
-}
-
-
-@media (max-width: 768px) {
+    body {
+      margin: 0;
+      background: black;
+      overflow-x: hidden;
+    }
 
     nav {
-        width: 95%;
-        justify-content: center;
-        text-align: center;
+      background: rgb(41, 41, 41);
+      width: 80%;
+      min-height: 50px;
+      margin: auto;
+      padding: 10px 20px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      row-gap: 10px;
     }
 
     nav a {
-        font-size: 14px;
-        margin-right: 12px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      margin-right: 20px;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: rgb(0, 162, 255);
     }
 
     nav section {
-        width: 100%;
-        justify-content: center;
-        margin-top: 5px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 22px;
+      height: 22px;
     }
 
     .case-studies {
-        width: 95%;
-        padding: 25px 0;
+      width: 80%;
+      margin: auto;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: white;
     }
 
     .intro {
-        width: 90%;
-        font-size: 15px;
+      width: 60%;
+      margin: 0 auto 40px;
+      color: white;
+      line-height: 1.6;
     }
 
     .Project {
-        flex-direction: column;
-        gap: 25px;
-        text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      color: white;
+      border-radius: 5px;
     }
 
+
     .Project img {
-        width: 100%;
+      width: 45%;
+      border-radius: 8px;
     }
 
     .case-text {
-        width: 100%;
-        text-align: center;
+      width: 45%;
+      text-align: left;
     }
 
     h3 {
-        font-size: 20px;
+      font-size: 24px;
+      margin-bottom: 10px;
+
+    }
+
+    p {
+
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      margin-bottom: 10px;
+
     }
 
     button {
+      background: black;
+      color: white;
+      border-radius: 6px;
+      border: 2px solid white;
+      cursor: pointer;
+      transition: 0.3s ease;
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: greenyellow;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .divider {
+      width: 80%;
+      height: 2px;
+      margin: 50px auto;
+      background: linear-gradient(to right,
+          transparent,
+          white,
+          transparent);
+      opacity: 0.6;
+    }
+
+
+    @media (max-width: 768px) {
+
+      nav {
+        width: 95%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav a {
+        font-size: 14px;
+        margin-right: 12px;
+      }
+
+      nav section {
+        width: 100%;
+        justify-content: center;
+        margin-top: 5px;
+      }
+
+      .case-studies {
+        width: 95%;
+        padding: 25px 0;
+      }
+
+      .intro {
+        width: 90%;
+        font-size: 15px;
+      }
+
+      .Project {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+
+      .Project img {
+        width: 100%;
+      }
+
+      .case-text {
+        width: 100%;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      button {
         width: 100%;
         max-width: 260px;
+      }
     }
-}
 
-@media (max-width: 480px) {
+    @media (max-width: 480px) {
 
-    h2 {
+      h2 {
         font-size: 26px;
-    }
+      }
 
-    h3 {
+      h3 {
         font-size: 18px;
+      }
     }
-}
-</style>
-    <link rel="icon" type="image/png" href="./Picture/Logo_tab.png" />
-    <title>Portfolio</title>
-  </head>
+  </style>
+  <link rel="icon" type="image/png" href="./Picture/Logo_tab.png" />
+  <title>Portfolio</title>
+</head>
 
-  <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="Skills.html">Skills</a>
-      <a href="Project.html">Project</a>
-      <a href="Contact.html">Contact</a>
-      <a href="Resume.html">Resume</a>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Skills.html">Skills</a>
+    <a href="Project.html">Project</a>
+    <a href="Contact.html">Contact</a>
+    <a href="Resume.html">Resume</a>
 
-      <section>
-        <img src="./Picture/git_logo.png" alt="" class="logo" id="git" />
-        <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link" />
-        <img
-          src="./Picture/email_logo.png"
-          alt=""
-          class="logo"
-          id="email_img"
-        />
-      </section>
-    </nav>
-    <section class="case-studies">
-      <h2>Projects</h2>
-
-      <p class="intro">
-        A selection of frontend development projects demonstrating clean UI
-        design, responsive layouts, and efficient JavaScript logic.
-      </p>
-
-      <div class="Project">
-        <div class="case-text">
-          <span class="tag abc" style="background-color: rgb(90, 140, 90)"
-            >Quiz App</span
-          >
-          <h3 style="color: white">Web-Based Quiz Platform</h3>
-
-          <p>
-            This project is an interactive quiz platform built to make learning
-            engaging and intuitive. Users answer multiple-choice questions,
-            receive instant feedback, and see their score update as they
-            progress through the quiz. The focus of the project is smooth user
-            flow, clarity, and responsiveness.
-          </p>
-
-          <p style="color: white">
-            JavaScript controls the quiz logic such as question switching,
-            answer validation, and score tracking, while HTML and CSS ensure a
-            clean layout that adapts well across different screen sizes.
-          </p>
-
-          <br />
-
-          <a href="https://zaid154.github.io/Quiz/" target="_blank">
-            <button class="Quiz">View Project</button>
-          </a>
-        </div>
-
-        <img src="./Picture/quiz_pro.png" alt="Number Finder Game interface" />
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="Project">
-        <img src="./Picture/game_pro.png" alt="Number Finder Game interface" />
-        <div class="case-text">
-          <span class="tag abc" style="background-color: rgb(50, 110, 110)"
-            >Game</span
-          >
-          <h3 style="color: white">Number Finder Game</h3>
-
-          <p>
-            A browser-based interactive game designed to improve focus and
-            reaction time. Users must identify a target number from a
-            dynamically generated grid within a limited time frame. The
-            application provides real-time feedback and score tracking.
-          </p>
-
-          <ul style="color: white; padding-left: 20px">
-            <li>Dynamic number grid generated using JavaScript</li>
-            <li>Timer-based gameplay to increase difficulty</li>
-            <li>Real-time score calculation and updates</li>
-            <li>Reset and replay functionality</li>
-            <li>Responsive user interface using CSS Grid</li>
-          </ul>
-
-          <br />
-
-          <a href="https://zaid154.github.io/Game/" target="_blank">
-            <button class="e-com_link">View Project</button>
-          </a>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="Project">
-        <div class="case-text">
-          <span class="tag abc" style="background-color: rgb(200, 90, 120)">
-            Special
-          </span>
-          <h3 style="color: white">Romantic Proposal & Date Planner</h3>
-
-          <p>
-            A heartfelt web application created to deliver a personalized
-            romantic proposal. The project combines emotional storytelling with
-            interactive elements, allowing users to respond in real time and
-            seamlessly plan a special date.
-          </p>
-
-          <ul style="color: white; padding-left: 20px">
-            <li>Interactive Yes / No proposal logic using JavaScript</li>
-            <li>Animated heart effects and dynamic message updates</li>
-            <li>Formspree integration to capture responses securely</li>
-            <li>Date, time, and place selection on a dedicated page</li>
-            <li>Clean, responsive UI with smooth animations</li>
-          </ul>
-
-          <br />
-
-          <a href="https://zaid154.github.io/propose/" target="_blank">
-            <button class="Propose">View Project</button>
-          </a>
-        </div>
-
-        <img
-          src="./Picture/Proposal for date.png"
-          alt="Number Finder Game interface"
-        />
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="Project">
-        <img
-          src="./Picture/to_do_list_pro.png"
-          alt="To-Do List Project Preview"
-        />
-        <div class="case-text">
-          <span class="tag def" style="background: rgb(156, 248, 51)"
-            >tasks</span
-          >
-          <h3 style="color: white">To-Do List Web App</h3>
-          <p>
-            A simple and interactive To-Do List application built using HTML,
-            CSS, and JavaScript. Users can add, delete, and manage daily tasks
-            easily with a clean and responsive UI.
-          </p>
-          <a href="https://zaid154.github.io/To-Do-List/" target="_blank">
-            <button class="e-com_link">View Project</button>
-          </a>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="Project">
-        <div class="case-text">
-          <span class="tag def" style="background-color: rgb(204, 210, 132)"
-            >Fun</span
-          >
-          <h3 style="color: white">Color Changer Dashboard</h3>
-
-          <p>
-            An interactive web application that allows users to change the
-            background color dynamically. Users can select a custom color using
-            a color picker or generate random colors instantly. Built using
-            HTML, CSS, and JavaScript with a clean and responsive UI.
-          </p>
-
-          <a href="https://zaid154.github.io/Color-changer/" target="_blank">
-            <button class="e-com_link">View Project</button>
-          </a>
-        </div>
-        <img
-          src="./Picture/Color_Changer_pro.png"
-          alt="Color Changer Project UI"
-        />
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="Project">
-        <img src="./Picture/cal_pro.png" alt="project image" />
-        <div class="case-text">
-          <span class="tag ghi" style="background-color: rgb(230, 124, 198)"
-            >Maths</span
-          >
-          <h3 style="color: white">Calculator Web Application</h3>
-          <p>
-            Created a responsive calculator using HTML, CSS, and JavaScript.
-            Implemented features such as addition, subtraction, multiplication,
-            division, percentage, delete, clear, and sign toggle using DOM
-            manipulation and event handling.
-          </p>
-          <a href="https://zaid154.github.io/Calculator/" target="_blank">
-            <button class="e-com_link">View Project</button>
-          </a>
-        </div>
-      </div>
+    <section>
+      <img src="./Picture/git_logo.png" alt="" class="logo" id="git" />
+      <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link" />
+      <img src="./Picture/email_logo.png" alt="" class="logo" id="email_img" />
     </section>
+  </nav>
+  <section class="case-studies">
+    <h2>Projects</h2>
 
-    <script>let email = document.querySelector('#email_img');
-let link  = document.querySelector('#link');
-let git   = document.querySelector('#git');
+    <p class="intro">
+      A selection of frontend development projects demonstrating clean UI
+      design, responsive layouts, and efficient JavaScript logic.
+    </p>
 
-email.addEventListener('click', () => {
-    window.open("mailto:zaidm1323@gmail.com")
-});
+    <div class="Project">
+      <div class="case-text">
+        <span class="tag abc" style="background-color: rgb(90, 140, 90)">Quiz App</span>
+        <h3 style="color: white">Web-Based Quiz Platform</h3>
 
-link.addEventListener('click', () => {
-    window.open("https://www.linkedin.com/in/mohd-zaid-794090231")
-});
+        <p>
+          This project is an interactive quiz platform built to make learning
+          engaging and intuitive. Users answer multiple-choice questions,
+          receive instant feedback, and see their score update as they
+          progress through the quiz. The focus of the project is smooth user
+          flow, clarity, and responsiveness.
+        </p>
 
-git.addEventListener('click', () => {
-    window.open("https://github.com/zaid-bca","_blank")
-});
-</script>
-  </body>
+        <p style="color: white">
+          JavaScript controls the quiz logic such as question switching,
+          answer validation, and score tracking, while HTML and CSS ensure a
+          clean layout that adapts well across different screen sizes.
+        </p>
+
+        <br />
+
+        <a href="https://zaid154.github.io/Quiz/" target="_blank">
+          <button class="Quiz">View Project</button>
+        </a>
+      </div>
+
+      <img src="./Picture/quiz_pro.png" alt="Number Finder Game interface" />
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="Project">
+      <img src="./Picture/game_pro.png" alt="Number Finder Game interface" />
+      <div class="case-text">
+        <span class="tag abc" style="background-color: rgb(50, 110, 110)">Game</span>
+        <h3 style="color: white">Number Finder Game</h3>
+
+        <p>
+          A browser-based interactive game designed to improve focus and
+          reaction time. Users must identify a target number from a
+          dynamically generated grid within a limited time frame. The
+          application provides real-time feedback and score tracking.
+        </p>
+
+        <ul style="color: white; padding-left: 20px">
+          <li>Dynamic number grid generated using JavaScript</li>
+          <li>Timer-based gameplay to increase difficulty</li>
+          <li>Real-time score calculation and updates</li>
+          <li>Reset and replay functionality</li>
+          <li>Responsive user interface using CSS Grid</li>
+        </ul>
+
+        <br />
+
+        <a href="https://zaid154.github.io/Game/" target="_blank">
+          <button class="e-com_link">View Project</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="Project">
+      <div class="case-text">
+        <span class="tag abc" style="background-color: rgb(200, 90, 120)">
+          Special
+        </span>
+        <h3 style="color: white">Romantic Proposal & Date Planner</h3>
+
+        <p>
+          A heartfelt web application created to deliver a personalized
+          romantic proposal. The project combines emotional storytelling with
+          interactive elements, allowing users to respond in real time and
+          seamlessly plan a special date.
+        </p>
+
+        <ul style="color: white; padding-left: 20px">
+          <li>Interactive Yes / No proposal logic using JavaScript</li>
+          <li>Animated heart effects and dynamic message updates</li>
+          <li>Formspree integration to capture responses securely</li>
+          <li>Date, time, and place selection on a dedicated page</li>
+          <li>Clean, responsive UI with smooth animations</li>
+        </ul>
+
+        <br />
+
+        <a href="https://zaid154.github.io/propose/" target="_blank">
+          <button class="Propose">View Project</button>
+        </a>
+      </div>
+
+      <img src="./Picture/Proposal for date.png" alt="Number Finder Game interface" />
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="Project">
+      <img src="./Picture/to_do_list_pro.png" alt="To-Do List Project Preview" />
+      <div class="case-text">
+        <span class="tag def" style="background: rgb(156, 248, 51)">tasks</span>
+        <h3 style="color: white">To-Do List Web App</h3>
+        <p>
+          A simple and interactive To-Do List application built using HTML,
+          CSS, and JavaScript. Users can add, delete, and manage daily tasks
+          easily with a clean and responsive UI.
+        </p>
+        <a href="https://zaid154.github.io/To-Do-List/" target="_blank">
+          <button class="e-com_link">View Project</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="Project">
+      <div class="case-text">
+        <span class="tag def" style="background-color: rgb(204, 210, 132)">Fun</span>
+        <h3 style="color: white">Color Changer Dashboard</h3>
+
+        <p>
+          An interactive web application that allows users to change the
+          background color dynamically. Users can select a custom color using
+          a color picker or generate random colors instantly. Built using
+          HTML, CSS, and JavaScript with a clean and responsive UI.
+        </p>
+
+        <a href="https://zaid154.github.io/Color-changer/" target="_blank">
+          <button class="e-com_link">View Project</button>
+        </a>
+      </div>
+      <img src="./Picture/Color_Changer_pro.png" alt="Color Changer Project UI" />
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="Project">
+      <img src="./Picture/cal_pro.png" alt="project image" />
+      <div class="case-text">
+        <span class="tag ghi" style="background-color: rgb(230, 124, 198)">Maths</span>
+        <h3 style="color: white">Calculator Web Application</h3>
+        <p>
+          Created a responsive calculator using HTML, CSS, and JavaScript.
+          Implemented features such as addition, subtraction, multiplication,
+          division, percentage, delete, clear, and sign toggle using DOM
+          manipulation and event handling.
+        </p>
+        <a href="https://zaid154.github.io/Calculator/" target="_blank">
+          <button class="e-com_link">View Project</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>let email = document.querySelector('#email_img');
+    let link = document.querySelector('#link');
+    let git = document.querySelector('#git');
+
+    email.addEventListener('click', () => {
+      window.open("mailto:zaidm1323@gmail.com")
+    });
+
+    link.addEventListener('click', () => {
+      window.open("https://www.linkedin.com/in/mohd-zaid-794090231")
+    });
+
+    git.addEventListener('click', () => {
+      window.open("https://github.com/zaid-bca", "_blank")
+    });
+  </script>
+</body>
+
 </html>

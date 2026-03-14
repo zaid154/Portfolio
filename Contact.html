@@ -1,348 +1,324 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <link rel="icon" type="image/png" href="./Picture/Logo_tab.png" />
-    <style>body {
-    margin: 0;
-    background: black;
-    font-family: "Times New Roman", Times, serif;
-}
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            font-family: "Times New Roman", Times, serif;
+        }
 
 
-nav {
-    width: 80%;
-    height: 50px;
-    margin: 0 auto;
-    padding: 0 30px;
-    background: rgb(41, 41, 41);
-    border-radius: 6px;
+        nav {
+            width: 80%;
+            height: 50px;
+            margin: 0 auto;
+            padding: 0 30px;
+            background: rgb(41, 41, 41);
+            border-radius: 6px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 25px;
-    font-size: 16px;
-    font-weight: 500;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-nav a:hover {
-    color: rgb(0, 162, 255);
-}
+        nav a:hover {
+            color: rgb(0, 162, 255);
+        }
 
-nav section {
-    display: flex;
-    align-items: center;
-}
+        nav section {
+            display: flex;
+            align-items: center;
+        }
 
-.logo {
-    width: 22px;
-    height: 22px;
-    margin-left: 15px;
-    cursor: pointer;
-}
-
-
-h1 {
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 0;
-}
+        .logo {
+            width: 22px;
+            height: 22px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
 
 
-.main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 100px 100px 100px;
-}
+        h1 {
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 0;
+        }
 
 
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 400px;
-    width: 30%;
-}
-
-label {
-    color: white;
-    margin-bottom: 5px;
-}
-
-input {
-    padding: 10px;
-    border-radius: 4px;
-    border: none;
-    margin-bottom: 10px;
-    outline: none;
-}
-
-textarea {
-    height: 100px;
-    padding: 10px;
-    border-radius: 4px;
-    border: none;
-    resize: none;
-    outline: none;
-}
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 100px 100px 100px;
+        }
 
 
 
-.submit {
-    background: black;
-    color: white;
-    border-radius: 6px;
-    border: 2px solid white;
-    cursor: pointer;
-    transition: 0.3s ease;
-    padding: 12px 24px;
-    font-size: 16px;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 400px;
+            width: 30%;
+        }
 
-.submit:hover {
-    background: greenyellow;
-    color: black;
-    transform: scale(1.05);
-}
+        label {
+            color: white;
+            margin-bottom: 5px;
+        }
 
+        input {
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            margin-bottom: 10px;
+            outline: none;
+        }
 
-#successMsg {
-    opacity: 0;
-    visibility: hidden;
-    color: lightgreen;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 16px;
-
-    transition: opacity 1s ease, visibility 1s ease;
-}
-
-#successMsg.show {
-    opacity: 1;
-    visibility: visible;
-}
+        textarea {
+            height: 100px;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            resize: none;
+            outline: none;
+        }
 
 
 
-@media (max-width: 768px) {
+        .submit {
+            background: black;
+            color: white;
+            border-radius: 6px;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: 0.3s ease;
+            padding: 12px 24px;
+            font-size: 16px;
+        }
 
-    
-    nav {
-        width: 95%;
-        height: auto;
-        padding: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+        .submit:hover {
+            background: greenyellow;
+            color: black;
+            transform: scale(1.05);
+        }
 
-    nav a {
-        margin: 5px 12px;
-        font-size: 14px;
-    }
 
-    nav section {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 8px;
-    }
+        #successMsg {
+            opacity: 0;
+            visibility: hidden;
+            color: lightgreen;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
 
-    .logo {
-        width: 20px;
-        height: 20px;
-        margin: 0 10px;
-    }
+            transition: opacity 1s ease, visibility 1s ease;
+        }
 
-   
-    h1 {
-        font-size: 26px;
-        padding-top: 30px;
-        text-align: center;
-    }
+        #successMsg.show {
+            opacity: 1;
+            visibility: visible;
+        }
 
-   
-    .main {
-        padding: 20px;
-        align-items: flex-start;
-    }
 
-   
-    form {
-        width: 100%;
-        height: auto;
-        padding-right: 20px;
-      
-    }
 
-    label {
-        font-size: 14px;
-    }
+        @media (max-width: 768px) {
 
-    input,
-    textarea {
-        width: 100%;
-        font-size: 14px;
-    }
 
-    textarea {
-        height: 90px;
-    }
+            nav {
+                width: 95%;
+                height: auto;
+                padding: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-    /* BUTTON */
-    .submit {
-        width: 100%;
-        padding: 12px;
-        font-size: 15px;
-    }
+            nav a {
+                margin: 5px 12px;
+                font-size: 14px;
+            }
 
-    /* SUCCESS MESSAGE */
-    #successMsg {
-        font-size: 14px;
-    }
-}
-</style>
-  </head>
+            nav section {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 8px;
+            }
 
-  <body>
+            .logo {
+                width: 20px;
+                height: 20px;
+                margin: 0 10px;
+            }
+
+
+            h1 {
+                font-size: 26px;
+                padding-top: 30px;
+                text-align: center;
+            }
+
+
+            .main {
+                padding: 20px;
+                align-items: flex-start;
+            }
+
+
+            form {
+                width: 100%;
+                height: auto;
+                padding-right: 20px;
+
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            textarea {
+                height: 90px;
+            }
+
+            /* BUTTON */
+            .submit {
+                width: 100%;
+                padding: 12px;
+                font-size: 15px;
+            }
+
+            /* SUCCESS MESSAGE */
+            #successMsg {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="Skills.html">Skills</a>
-      <a href="Project.html">Project</a>
-      <a href="Contact.html">Contact</a>
-      <a href="Resume.html">Resume</a>
+        <a href="index.html">Home</a>
+        <a href="Skills.html">Skills</a>
+        <a href="Project.html">Project</a>
+        <a href="Contact.html">Contact</a>
+        <a href="Resume.html">Resume</a>
 
-      <section>
-        <img src="./Picture/git_logo.png" alt="" class="logo" id="git" />
-        <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link" />
-        <img
-          src="./Picture/email_logo.png"
-          alt=""
-          class="logo"
-          id="email_img"
-        />
-      </section>
+        <section>
+            <img src="./Picture/git_logo.png" alt="" class="logo" id="git" />
+            <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link" />
+            <img src="./Picture/email_logo.png" alt="" class="logo" id="email_img" />
+        </section>
     </nav>
 
     <h1>Get In Touch</h1>
 
     <div class="main">
-      <form
-        id="contactForm"
-        action="https://formspree.io/f/xyzrqpae"
-        method="POST"
-      >
-        <label>Email :</label>
-        <input
-          type="email"
-          id="enter_email"
-          name="email"
-          placeholder="Email Address"
-          required
-        />
-        <br />
-        <label>Mobile Number :</label>
-        <input
-          type="text"
-          id="mobile"
-          name="mobile"
-          placeholder="Mobile Number"
-          maxlength="10"
-          required
-        />
-        <br />
-        <label>Message :</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Your message..."
-          required
-        ></textarea>
-        <br />
+        <form id="contactForm" action="https://formspree.io/f/xyzrqpae" method="POST">
+            <label>Email :</label>
+            <input type="email" id="enter_email" name="email" placeholder="Email Address" required />
+            <br />
+            <label>Mobile Number :</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" maxlength="10" required />
+            <br />
+            <label>Message :</label>
+            <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+            <br />
 
-        <button type="submit" class="submit">Submit</button>
-        <br />
-        <p id="successMsg">Thank you! Your message has been sent.</p>
-      </form>
+            <button type="submit" class="submit">Submit</button>
+            <br />
+            <p id="successMsg">Thank you! Your message has been sent.</p>
+        </form>
     </div>
 
     <script>
-      let email = document.querySelector('#email_img');
-let link = document.querySelector('#link');
-let git = document.querySelector('#git');
-let enter_email = document.querySelector('#enter_email');
-let message = document.querySelector('#message');
-let mobile = document.querySelector('#mobile');
+        let email = document.querySelector('#email_img');
+        let link = document.querySelector('#link');
+        let git = document.querySelector('#git');
+        let enter_email = document.querySelector('#enter_email');
+        let message = document.querySelector('#message');
+        let mobile = document.querySelector('#mobile');
 
-const form = document.getElementById("contactForm");
-const successMsg = document.getElementById("successMsg");
-
-
-email.addEventListener('click', () => {
-    window.open("mailto:zaidm1323@gmail.com");
-});
-
-link.addEventListener('click', () => {
-    window.open("https://www.linkedin.com/in/mohd-zaid-794090231", "_blank");
-});
-
-git.addEventListener('click', () => {
-    window.open("https://github.com/zaid-bca", "_blank");
-});
+        const form = document.getElementById("contactForm");
+        const successMsg = document.getElementById("successMsg");
 
 
-mobile.addEventListener("input", () => {
-    mobile.value = mobile.value.replace(/[^0-9]/g, "");
-});
+        email.addEventListener('click', () => {
+            window.open("mailto:zaidm1323@gmail.com");
+        });
 
-form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+        link.addEventListener('click', () => {
+            window.open("https://www.linkedin.com/in/mohd-zaid-794090231", "_blank");
+        });
 
-    if (enter_email.value === "" || mobile.value === "") {
-        alert("Email and Mobile are compulsory");
-        return;
-    }
+        git.addEventListener('click', () => {
+            window.open("https://github.com/zaid-bca", "_blank");
+        });
 
-    const formData = new FormData(form);
 
-    try {
-        const response = await fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-                "Accept": "application/json"
+        mobile.addEventListener("input", () => {
+            mobile.value = mobile.value.replace(/[^0-9]/g, "");
+        });
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (enter_email.value === "" || mobile.value === "") {
+                alert("Email and Mobile are compulsory");
+                return;
+            }
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+                    form.reset();
+
+                    successMsg.classList.add("show");
+
+                    setTimeout(() => {
+                        successMsg.classList.remove("show");
+                    }, 10000);
+                }
+
+                else {
+                    alert("Something went wrong. Please try again.");
+                }
+            } catch (error) {
+                alert("Network error. Please check your internet connection.");
             }
         });
 
-if (response.ok) {
-    form.reset();
-
-    successMsg.classList.add("show");
-    
-    setTimeout(() => {
-        successMsg.classList.remove("show");
-    }, 10000);
-}
-
-        else {
-            alert("Something went wrong. Please try again.");
-        }
-    } catch (error) {
-        alert("Network error. Please check your internet connection.");
-    }
-});
-
     </script>
-  </body>
+</body>
+
 </html>
