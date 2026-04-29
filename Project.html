@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -52,6 +53,7 @@
     .logo {
       width: 22px;
       height: 22px;
+      cursor: pointer;
     }
 
     .case-studies {
@@ -74,7 +76,7 @@
       line-height: 1.6;
     }
 
-    .Project {
+    .project-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -83,8 +85,7 @@
       border-radius: 5px;
     }
 
-
-    .Project img {
+    .project-card img {
       width: 45%;
       border-radius: 8px;
     }
@@ -97,12 +98,19 @@
     h3 {
       font-size: 24px;
       margin-bottom: 10px;
-
+      color: white;
     }
 
     p {
-
       margin-bottom: 20px;
+      color: white;
+    }
+
+    ul {
+      color: white;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      line-height: 1.8;
     }
 
     .tag {
@@ -111,10 +119,53 @@
       border-radius: 15px;
       font-size: 12px;
       margin-bottom: 10px;
-
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    button {
+    .tag--food {
+      background-color: #e85d04;
+      color: white;
+    }
+
+    .tag--react {
+      background-color: #61dafb;
+      color: #222;
+    }
+
+    .tag--quiz {
+      background-color: rgb(90, 140, 90);
+      color: white;
+    }
+
+    .tag--game {
+      background-color: rgb(50, 110, 110);
+      color: white;
+    }
+
+    .tag--special {
+      background-color: rgb(200, 90, 120);
+      color: white;
+    }
+
+    .tag--tasks {
+      background: rgb(156, 248, 51);
+      color: #222;
+    }
+
+    .tag--fun {
+      background-color: rgb(204, 210, 132);
+      color: #222;
+    }
+
+    .tag--maths {
+      background-color: rgb(230, 124, 198);
+      color: white;
+    }
+
+    button,
+    .btn {
       background: black;
       color: white;
       border-radius: 6px;
@@ -123,9 +174,12 @@
       transition: 0.3s ease;
       padding: 12px 24px;
       font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button:hover {
+    button:hover,
+    .btn:hover {
       background: greenyellow;
       color: black;
       transform: scale(1.05);
@@ -142,6 +196,10 @@
       opacity: 0.6;
     }
 
+    /* Reverse layout: image on left, text on right */
+    .project-card--reverse {
+      flex-direction: row;
+    }
 
     @media (max-width: 768px) {
 
@@ -172,13 +230,13 @@
         font-size: 15px;
       }
 
-      .Project {
-        flex-direction: column;
+      .project-card {
+        flex-direction: column !important;
         gap: 25px;
         text-align: center;
       }
 
-      .Project img {
+      .project-card img {
         width: 100%;
       }
 
@@ -187,11 +245,17 @@
         text-align: center;
       }
 
+      .case-text ul {
+        text-align: left;
+        display: inline-block;
+      }
+
       h3 {
         font-size: 20px;
       }
 
-      button {
+      button,
+      .btn {
         width: 100%;
         max-width: 260px;
       }
@@ -209,7 +273,7 @@
     }
   </style>
   <link rel="icon" type="image/png" href="./Picture/Logo_tab.png" />
-  <title>Portfolio</title>
+  <title>Portfolio | Projects</title>
 </head>
 
 <body>
@@ -221,23 +285,93 @@
     <a href="Resume.html">Resume</a>
 
     <section>
-      <img src="./Picture/git_logo.png" alt="" class="logo" id="git" />
-      <img src="./Picture/link_logo.jpg" alt="" class="logo" id="link" />
-      <img src="./Picture/email_logo.png" alt="" class="logo" id="email_img" />
+      <img src="./Picture/git_logo.png" alt="GitHub" class="logo" id="git" />
+      <img src="./Picture/link_logo.jpg" alt="LinkedIn" class="logo" id="link" />
+      <img src="./Picture/email_logo.png" alt="Email" class="logo" id="email_img" />
     </section>
   </nav>
-  <section class="case-studies">
-    <h2>Projects</h2>
+
+  <section class="case-studies" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Projects</h2>
 
     <p class="intro">
       A selection of frontend development projects demonstrating clean UI
       design, responsive layouts, and efficient JavaScript logic.
     </p>
 
-    <div class="Project">
+    <!-- Project 1: YumRun Food Ordering App -->
+    <article class="project-card">
       <div class="case-text">
-        <span class="tag abc" style="background-color: rgb(90, 140, 90)">Quiz App</span>
-        <h3 style="color: white">Web-Based Quiz Platform</h3>
+        <span class="tag tag--food">Food App</span>
+        <h3>YumRun – Food Ordering Web Application</h3>
+
+        <p>
+          A dynamic food ordering platform built with React.js, Redux Toolkit,
+          and Tailwind CSS. Users can browse restaurants, search and filter
+          dishes, add items to cart, and manage their orders seamlessly.
+          The app fetches real-time data through API integration with optimized
+          performance using lazy loading.
+        </p>
+
+        <ul>
+          <li>React.js with functional components and hooks</li>
+          <li>Redux Toolkit for state management (cart, filters)</li>
+          <li>Tailwind CSS for responsive and modern UI</li>
+          <li>Search & filtering functionality for dishes</li>
+          <li>Cart features: add, remove, clear items</li>
+          <li>Dynamic routing using React Router</li>
+          <li>API integration for live restaurant data</li>
+          <li>Lazy loading & code splitting for performance</li>
+        </ul>
+
+        <a href="https://github.com/zaid154/Food-App" target="_blank" rel="noopener noreferrer" class="btn">
+          View Git Hub Repository
+        </a>
+      </div>
+
+      <img src="./Picture/Food App.png" alt="Screenshot of YumRun food ordering app showing restaurant cards with search and cart functionality" />
+    </article>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- Project 2: Book Reader React App -->
+    <article class="project-card project-card--reverse">
+      <img src="./Picture/book_reader_pro.png" alt="Screenshot of the book reading app interface showing book library and reading view with dark mode" />
+      <div class="case-text">
+        <span class="tag tag--react">React App</span>
+        <h3>Online Book Reader & Library</h3>
+
+        <p>
+          A React-based web application where users can explore, search,
+          and read books online. The platform provides a clean reading
+          experience with bookmarking, night mode, and reading progress
+          tracking features.
+        </p>
+
+        <ul>
+          <li>Built with React.js and modern hooks</li>
+          <li>Book library with search and category filters</li>
+          <li>Interactive book reader with page flip animations</li>
+          <li>Reading progress tracker and bookmark system</li>
+          <li>Dark mode / Night reading mode toggle</li>
+          <li>Responsive design using CSS Modules / Tailwind</li>
+          <li>Local storage for saving user preferences</li>
+          <li>Clean, distraction-free reading UI</li>
+        </ul>
+
+        <a href="https://github.com/zaid154/Online-Book-Reader" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
+        </a>
+      </div>
+    </article>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- Project 3: Quiz App -->
+    <article class="project-card">
+      <div class="case-text">
+        <span class="tag tag--quiz">Quiz App</span>
+        <h3>Web-Based Quiz Platform</h3>
 
         <p>
           This project is an interactive quiz platform built to make learning
@@ -247,7 +381,7 @@
           flow, clarity, and responsiveness.
         </p>
 
-        <p style="color: white">
+        <p>
           JavaScript controls the quiz logic such as question switching,
           answer validation, and score tracking, while HTML and CSS ensure a
           clean layout that adapts well across different screen sizes.
@@ -255,21 +389,22 @@
 
         <br />
 
-        <a href="https://zaid154.github.io/Quiz/" target="_blank">
-          <button class="Quiz">View Project</button>
+        <a href="https://zaid154.github.io/Quiz/" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
         </a>
       </div>
 
-      <img src="./Picture/quiz_pro.png" alt="Number Finder Game interface" />
-    </div>
+      <img src="./Picture/quiz_pro.png" alt="Screenshot of the quiz platform showing a multiple-choice question with answer options" />
+    </article>
 
-    <div class="divider"></div>
+    <div class="divider" role="separator"></div>
 
-    <div class="Project">
-      <img src="./Picture/game_pro.png" alt="Number Finder Game interface" />
+    <!-- Project 4: Number Finder Game -->
+    <article class="project-card project-card--reverse">
+      <img src="./Picture/game_pro.png" alt="Screenshot of the number finder game grid with numbers and countdown timer" />
       <div class="case-text">
-        <span class="tag abc" style="background-color: rgb(50, 110, 110)">Game</span>
-        <h3 style="color: white">Number Finder Game</h3>
+        <span class="tag tag--game">Game</span>
+        <h3>Number Finder Game</h3>
 
         <p>
           A browser-based interactive game designed to improve focus and
@@ -278,7 +413,7 @@
           application provides real-time feedback and score tracking.
         </p>
 
-        <ul style="color: white; padding-left: 20px">
+        <ul>
           <li>Dynamic number grid generated using JavaScript</li>
           <li>Timer-based gameplay to increase difficulty</li>
           <li>Real-time score calculation and updates</li>
@@ -288,20 +423,19 @@
 
         <br />
 
-        <a href="https://zaid154.github.io/Game/" target="_blank">
-          <button class="e-com_link">View Project</button>
+        <a href="https://zaid154.github.io/Game/" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
         </a>
       </div>
-    </div>
+    </article>
 
-    <div class="divider"></div>
+    <div class="divider" role="separator"></div>
 
-    <div class="Project">
+    <!-- Project 5: Romantic Proposal & Date Planner -->
+    <article class="project-card">
       <div class="case-text">
-        <span class="tag abc" style="background-color: rgb(200, 90, 120)">
-          Special
-        </span>
-        <h3 style="color: white">Romantic Proposal & Date Planner</h3>
+        <span class="tag tag--special">Special</span>
+        <h3>Romantic Proposal & Date Planner</h3>
 
         <p>
           A heartfelt web application created to deliver a personalized
@@ -310,7 +444,7 @@
           seamlessly plan a special date.
         </p>
 
-        <ul style="color: white; padding-left: 20px">
+        <ul>
           <li>Interactive Yes / No proposal logic using JavaScript</li>
           <li>Animated heart effects and dynamic message updates</li>
           <li>Formspree integration to capture responses securely</li>
@@ -320,37 +454,40 @@
 
         <br />
 
-        <a href="https://zaid154.github.io/propose/" target="_blank">
-          <button class="Propose">View Project</button>
+        <a href="https://zaid154.github.io/propose/" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
         </a>
       </div>
 
-      <img src="./Picture/Proposal for date.png" alt="Number Finder Game interface" />
-    </div>
+      <img src="./Picture/Proposal for date.png" alt="Screenshot of the romantic proposal planner showing love message and date planning interface" />
+    </article>
 
-    <div class="divider"></div>
+    <div class="divider" role="separator"></div>
 
-    <div class="Project">
-      <img src="./Picture/to_do_list_pro.png" alt="To-Do List Project Preview" />
+    <!-- Project 6: To-Do List -->
+    <article class="project-card project-card--reverse">
+      <img src="./Picture/to_do_list_pro.png" alt="Screenshot of the to-do list app showing task input field and list of added tasks" />
       <div class="case-text">
-        <span class="tag def" style="background: rgb(156, 248, 51)">tasks</span>
-        <h3 style="color: white">To-Do List Web App</h3>
+        <span class="tag tag--tasks">Tasks</span>
+        <h3>To-Do List Web App</h3>
         <p>
           A simple and interactive To-Do List application built using HTML,
           CSS, and JavaScript. Users can add, delete, and manage daily tasks
           easily with a clean and responsive UI.
         </p>
-        <a href="https://zaid154.github.io/To-Do-List/" target="_blank">
-          <button class="e-com_link">View Project</button>
+        <a href="https://zaid154.github.io/To-Do-List/" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
         </a>
       </div>
-    </div>
+    </article>
 
-    <div class="divider"></div>
-    <div class="Project">
+    <div class="divider" role="separator"></div>
+
+    <!-- Project 7: Color Changer Dashboard -->
+    <article class="project-card">
       <div class="case-text">
-        <span class="tag def" style="background-color: rgb(204, 210, 132)">Fun</span>
-        <h3 style="color: white">Color Changer Dashboard</h3>
+        <span class="tag tag--fun">Fun</span>
+        <h3>Color Changer Dashboard</h3>
 
         <p>
           An interactive web application that allows users to change the
@@ -359,34 +496,36 @@
           HTML, CSS, and JavaScript with a clean and responsive UI.
         </p>
 
-        <a href="https://zaid154.github.io/Color-changer/" target="_blank">
-          <button class="e-com_link">View Project</button>
+        <a href="https://zaid154.github.io/Color-changer/" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
         </a>
       </div>
-      <img src="./Picture/Color_Changer_pro.png" alt="Color Changer Project UI" />
-    </div>
+      <img src="./Picture/Color_Changer_pro.png" alt="Screenshot of the color changer dashboard with color picker and random color generator button" />
+    </article>
 
-    <div class="divider"></div>
+    <div class="divider" role="separator"></div>
 
-    <div class="Project">
-      <img src="./Picture/cal_pro.png" alt="project image" />
+    <!-- Project 8: Calculator -->
+    <article class="project-card project-card--reverse">
+      <img src="./Picture/cal_pro.png" alt="Screenshot of the calculator app showing number keypad with mathematical operation buttons" />
       <div class="case-text">
-        <span class="tag ghi" style="background-color: rgb(230, 124, 198)">Maths</span>
-        <h3 style="color: white">Calculator Web Application</h3>
+        <span class="tag tag--maths">Maths</span>
+        <h3>Calculator Web Application</h3>
         <p>
           Created a responsive calculator using HTML, CSS, and JavaScript.
           Implemented features such as addition, subtraction, multiplication,
           division, percentage, delete, clear, and sign toggle using DOM
           manipulation and event handling.
         </p>
-        <a href="https://zaid154.github.io/Calculator/" target="_blank">
-          <button class="e-com_link">View Project</button>
+        <a href="https://zaid154.github.io/Calculator/" target="_blank" rel="noopener noreferrer" class="btn">
+          View Project
         </a>
       </div>
-    </div>
+    </article>
   </section>
 
-  <script>let email = document.querySelector('#email_img');
+  <script>
+    let email = document.querySelector('#email_img');
     let link = document.querySelector('#link');
     let git = document.querySelector('#git');
 
