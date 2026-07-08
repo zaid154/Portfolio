@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: portfolio-cms-api
+    env: node
+    plan: free
+    # Install every workspace and build the React client so the server can serve client/dist.
+    buildCommand: npm install && npm install --prefix client && npm install --prefix server && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # The built frontend calls the API on the same origin.
+      - key: VITE_API_URL
+        value: /api
+      - key: CLIENT_URL
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false

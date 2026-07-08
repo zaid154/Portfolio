@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Update the host below to your deployed domain, then keep sitemap.xml in sync.
+Sitemap: https://your-domain.com/sitemap.xml

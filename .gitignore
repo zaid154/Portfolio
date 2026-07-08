@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+.DS_Store
+
+# Separate workspace that lives inside this folder — not part of the portfolio repo.
+RESUME/
