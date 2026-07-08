@@ -1,0 +1,18 @@
+{
+  "name": "mockmate-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MockMate AI — AI mock interview platform (client + server, run with one command).",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "start": "npm --prefix server run start",
+    "seed": "npm --prefix server run seed",
+    "setup": "npm install && npm --prefix client install && npm --prefix server install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

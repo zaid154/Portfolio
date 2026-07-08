@@ -1,0 +1,195 @@
+\documentclass[a4paper,10pt]{article}
+
+% ---------------- Packages ----------------
+\usepackage{latexsym}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+% ---------------- Page Setup ----------------
+\geometry{
+ top=0.45in,
+ bottom=0.45in,
+ left=0.55in,
+ right=0.55in
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% ---------------- Colors ----------------
+\definecolor{primary}{HTML}{0B5394}
+
+% ---------------- Hyperlinks ----------------
+\hypersetup{
+ colorlinks=true,
+ urlcolor=primary
+}
+
+% ---------------- Section Style ----------------
+\titleformat{\section}
+{\large\bfseries\color{primary}}
+{}
+{0em}
+{}[\titlerule]
+
+\titlespacing{\section}{0pt}{4pt}{4pt}
+
+% ---------------- List Style ----------------
+\setlist[itemize]{
+ leftmargin=*,
+ itemsep=1pt,
+ topsep=2pt
+}
+
+% ---------------- Resume Item ----------------
+\newcommand{\resumeItem}[1]{
+ \item \small{#1}
+}
+
+\begin{document}
+
+% ================= HEADER =================
+\begin{center}
+
+{\Huge \textbf{Mohd Zaid}} \\[4pt]
+
+Delhi, India \,|\, +91-9999201255 \\
+\href{mailto:zaidm1323@gmail.com}{zaidm1323@gmail.com} \,|\,
+\href{https://portfolio-blush-alpha-52.vercel.app/}{Portfolio} \,|\,
+\href{https://github.com/zaid154}{GitHub} \,|\,
+\href{https://www.linkedin.com/in/mohd-zaid-794090231}{LinkedIn}
+
+\end{center}
+
+% ================= SUMMARY =================
+\section*{Professional Summary}
+
+Entry-level Full Stack Developer with hands-on experience in MERN Stack, React.js, Node.js, Express.js, MongoDB, and JavaScript. Currently working as a Full Stack MERN Developer Intern at Humanoid Maker, contributing to real-world e-commerce applications. Experienced in frontend and backend development, REST APIs, authentication, database design, responsive UI development, and AI-powered web applications. Passionate about building scalable, user-friendly software solutions.
+
+% ================= EDUCATION =================
+\section*{Education}
+
+\textbf{Bachelor of Computer Applications (BCA)} \hfill 2023 -- 2026 \\
+Indira Gandhi National Open University (IGNOU), Delhi \\
+Result Awaited
+
+\vspace{3pt}
+
+\textbf{Class XII (CBSE)} \hfill 2023 \\
+SBV B1 Yamuna Vihar, Delhi
+
+\vspace{3pt}
+
+\textbf{Class X (CBSE)} \hfill 2021 \\
+SBV B1 Yamuna Vihar, Delhi
+
+% ================= EXPERIENCE =================
+\section*{Internship Experience}
+
+\textbf{Full Stack MERN Stack Developer (Paid Internship)} \hfill 2026 \\
+\textbf{Humanoid Maker}
+
+\begin{itemize}
+
+\resumeItem{Working on an e-commerce web application using MongoDB, Express.js, React.js, and Node.js.}
+
+\resumeItem{Contributing to frontend and backend development, API integration, authentication, and responsive UI implementation.}
+
+\resumeItem{Testing applications, identifying bugs, resolving errors, and enhancing project functionality and performance.}
+
+\resumeItem{Integrating new features and maintaining existing functionalities for improved user experience.}
+
+\resumeItem{Using Claude AI and Cursor AI to improve development workflow, debugging, and productivity.}
+
+\resumeItem{Collaborating on real-world project maintenance, optimization, and feature enhancement.}
+
+\end{itemize}
+
+% ================= SKILLS =================
+\section*{Technical Skills}
+
+\begingroup
+\small
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\textbf{Frontend:} HTML, CSS, JavaScript, React.js, Redux Toolkit, Tailwind CSS\par
+\textbf{Backend:} Node.js, Express.js\par
+\textbf{Database:} MongoDB, MySQL, Firebase\par
+\textbf{Tools:} Git, GitHub, VS Code, Postman, Vercel\par
+\textbf{Concepts:} REST APIs, JWT Authentication, RBAC, State Management, Responsive Design\par
+\textbf{AI Agents:} Claude AI, Cursor AI\par
+\endgroup
+
+% ================= PROJECTS =================
+\section*{Projects}
+
+\begin{itemize}
+
+\resumeItem{
+\textbf{NexaMart -- Full Stack E-Commerce Marketplace} \\
+Built a full-stack e-commerce platform using MongoDB, Express.js, React.js, and Node.js. Implemented JWT authentication, OTP verification, product catalog, cart, order management, Razorpay payments, coupon system, and inventory management. Developed an admin dashboard for managing products, users, orders, and analytics. \\
+{\scriptsize \href{https://github.com/zaid154/Nexa-Mart}{[GitHub Repo]} \,|\, \href{https://nexamart-28c93.web.app}{[Live Demo]}}
+}
+
+\resumeItem{
+\textbf{NoteGenie -- AI Powered Study Assistant} \\
+Developed an AI-powered learning platform using React.js, Node.js, Express.js, MongoDB, and Google Gemini API. Implemented AI-generated notes, quizzes, flashcards, PDF processing, AI tutor chat, JWT authentication, role-based access control, and an admin dashboard for user and content management. \\
+{\scriptsize \href{https://github.com/zaid154/NoteGenie}{[GitHub Repo]} \,|\, \href{https://notegenie-d5199.web.app}{[Live Demo]}}
+}
+
+\resumeItem{
+\textbf{YumRun -- Food Ordering React Web Application} \\
+Built a responsive food ordering web application using React.js, Redux Toolkit, React Router v6, Tailwind CSS, and Parcel. Implemented cart, wishlist, checkout, order features, protected routes, lazy loading, reusable components, and dynamic restaurant routing. \\
+{\scriptsize \href{https://github.com/zaid154/Food-App}{[GitHub Repo]} \,|\, \href{https://yumrun-2e144.web.app}{[Live Demo]}}
+}
+
+\resumeItem{
+\textbf{Natifix -- AI-Powered Streaming Platform} \\
+Developed a Netflix-inspired streaming web application using React.js, Redux Toolkit, Tailwind CSS, Firebase Authentication, and TMDB API. Implemented protected routes, movie and TV show browsing, search functionality, watchlist management, YouTube trailer playback, lazy loading, and an AI-powered recommendation chatbot using Google's Gemini API. \\
+{\scriptsize \href{https://github.com/zaid154/Natifix}{[GitHub Repo]} \,|\, \href{https://natifix-6703d.web.app}{[Live Demo]}}
+}
+
+\end{itemize}
+
+\newpage
+
+% ================= CERTIFICATIONS =================
+\section*{Certifications}
+
+\begin{itemize}
+
+\resumeItem{Freedom Employability Academy}
+
+\resumeItem{AI for All -- Intel \& Skill India}
+
+\resumeItem{Infosys Springboard -- Exploring Computers}
+
+\resumeItem{Talent Hunt Competition -- PCTI Institute}
+
+\end{itemize}
+
+% ================= ACHIEVEMENTS =================
+\section*{Achievements \& Activities}
+
+\begin{itemize}
+
+\resumeItem{Built multiple frontend and full stack projects to strengthen web development skills}
+
+\resumeItem{Used Git and GitHub for version control and deployment}
+
+\resumeItem{Worked on real-world internship projects involving debugging and feature enhancement}
+
+\resumeItem{Continuously improving problem-solving and MERN Stack development skills}
+
+\end{itemize}
+
+% ================= LANGUAGES =================
+\section*{Languages}
+
+Hindi (Native) \,|\, English (Intermediate)
+
+\end{document}
