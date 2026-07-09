@@ -10,7 +10,6 @@
     "start": "npm start --prefix server",
 
     "seed": "npm run seed --prefix server",
-    "seed:reset": "npm run seed:reset --prefix server",
 
     "build": "npm run build --prefix client",
     "preview": "npm run preview --prefix client",

@@ -6,7 +6,7 @@ Modern full-stack developer portfolio with a secure admin dashboard. It works li
 
 ## Features
 
-- React + Vite public portfolio, fully driven by CMS content, with **dark/light mode** and scroll reveals
+- React + Vite public portfolio — **100% CMS-driven, zero hardcoded copy**: every heading, nav label, button, form label/placeholder and toast is editable content (empty DB → empty sections), with **dark/light mode** and scroll reveals
 - Admin login with JWT (Bearer), bcrypt password hashing, and protected dashboard routes
 - Full CRUD for **17 content types** — Hero, Stats, About, Skills, Projects, Experience, Education, Certificates, Blogs, Services, Testimonials, Contact Info, Resume, Social Links, SEO, Section Titles, Site Settings
 - Admin dashboard with three sections — **Overview** (stats + recent messages), **Content** (per-type editor), **Messages** (click-to-open inbox)
@@ -42,7 +42,9 @@ Modern full-stack developer portfolio with a secure admin dashboard. It works li
    npm run dev
    ```
 
-Frontend `http://localhost:5173` · API `http://localhost:5000/api/health` · Admin `http://localhost:5173/admin`
+Frontend `http://localhost:5060` · API `http://localhost:5050/api/health` · Admin `http://localhost:5060/admin`
+
+> **Local ports:** this repo's `.env` runs the API on **5050** and the client on **5060** — moved off the conventional 5000/5173 to coexist with another local dev server occupying those ports. To change them, edit `PORT` / `VITE_API_URL` / `CLIENT_URL` in `.env` and `server.port` in `client/vite.config.js` (keep `CLIENT_URL` in sync with the client port, since CORS only allows that origin).
 
 ## Scripts
 
@@ -72,6 +74,8 @@ Content types are stored in one of two ways, but the REST API is uniform — you
 
 This is all handled by `server/src/models/contentModels.js` (`modelForType`, `scopeForType`, `findAcrossModels`, …). See [FUNCTIONS.md §4](FUNCTIONS.md#4-content-model-registry-contentmodelsjs).
 
+> **No hardcoded copy:** every visible string on the public site — section headings/eyebrows, **nav labels**, **contact-form labels & placeholders**, button text, the success toast, even the "Syncing…" banner — lives in the **Section Titles** (`siteText`) singleton and is edited from the dashboard. Components render only DB values; nothing user-facing is baked into the source (an empty field renders nothing, an empty section disappears). The browser-frame address bar on project cards shows only the real `liveUrl` (or the project title) — no fabricated domains.
+
 ## Cloudinary uploads
 
 Dashboard image/PDF uploads go straight to Cloudinary. Set in `.env`:
@@ -99,9 +103,9 @@ The admin can also override the brand color at runtime via **Site Settings → A
 | `JWT_SECRET` / `JWT_EXPIRES_IN` | admin token secret / expiry (default `7d`) |
 | `ADMIN_NAME` / `ADMIN_EMAIL` / `ADMIN_PASSWORD` | first admin created by `npm run seed` |
 | `CLOUDINARY_CLOUD_NAME` / `_API_KEY` / `_API_SECRET` / `_FOLDER` | dashboard uploads |
-| `VITE_API_URL` | browser API URL (`http://localhost:5000/api` locally, `/api` on single-service deploy) |
-| `CLIENT_URL` | frontend origin allowed by CORS |
-| `PORT` | server port (default 5000) |
+| `VITE_API_URL` | browser API URL (this repo: `http://localhost:5050/api` locally; `/api` on single-service deploy) |
+| `CLIENT_URL` | frontend origin allowed by CORS (this repo: `http://localhost:5060`) |
+| `PORT` | server port (code default `5000`; this repo's `.env` uses `5050`) |
 | `DNS_SERVERS` | *(optional)* comma-separated DNS resolvers (e.g. `8.8.8.8,1.1.1.1`) — auto-used if your machine's resolver can't do `mongodb+srv://` SRV lookups |
 
 ## Deployment

@@ -5,23 +5,25 @@ import { toast } from 'react-hot-toast'
 import {
   ArrowRight, ArrowUpRight, Mail, MapPin, Menu, Moon, Sun, X,
   Download, Quote, Layers, MonitorSmartphone, Server,
-  LayoutDashboard, Code2, Zap, Phone, Send, Sparkles, LogIn, CheckCircle2, ExternalLink,
+  LayoutDashboard, Code2, Zap, Phone, Send, Sparkles, LogIn, CheckCircle2, ExternalLink, Rocket,
 } from 'lucide-react'
 import { api, getErrorMessage } from '../lib/api'
 import { first, asArray, text } from '../lib/site'
 import { useScrollSpy } from '../lib/hooks'
 import { Reveal, StaggerGroup, StaggerItem, Counter, Marquee, GithubIcon, LinkedinIcon } from './ui'
 
+// Nav section anchors are structural (they must match each <section> id); only the
+// visible LABEL comes from the CMS (siteText), so nothing here is hardcoded copy.
 const NAV = [
-  { id: 'work', label: 'Work' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'services', label: 'Services' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'work', key: 'navWork' },
+  { id: 'skills', key: 'navSkills' },
+  { id: 'services', key: 'navServices' },
+  { id: 'about', key: 'navAbout' },
+  { id: 'contact', key: 'navContact' },
 ]
 // Stable reference so useScrollSpy's effect doesn't re-subscribe on every render.
 const NAV_IDS = NAV.map((n) => n.id)
-const SERVICE_ICONS = { Layers, MonitorSmartphone, Server, LayoutDashboard, Code2 }
+const SERVICE_ICONS = { Layers, MonitorSmartphone, Server, LayoutDashboard, Code2, Code: Code2, Sparkles, Rocket }
 const initials = (name = '') => name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 
 // Render a heading, gradient-highlighting any *asterisk-wrapped* part (falls back to the last two words).
@@ -38,10 +40,10 @@ function Heading({ children }) {
 }
 
 /* ---------------- Navbar ---------------- */
-function Navbar({ settings, theme, toggleTheme }) {
+function Navbar({ site, settings, theme, toggleTheme }) {
   const [open, setOpen] = useState(false)
   const active = useScrollSpy(NAV_IDS)
-  const cta = settings.ctaText || 'Hire Me'
+  const cta = settings.ctaText
 
   return (
     <>
@@ -51,10 +53,10 @@ function Navbar({ settings, theme, toggleTheme }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
       >
-        <a href="#home" className="brand"><span className="logo"><img src={settings.logoImage || '/favicon.png'} alt={settings.siteName || 'Mohd Zaid'} /></span>{settings.siteName || 'Mohd Zaid'}</a>
+        <a href="#home" className="brand"><span className="logo">{settings.logoImage ? <img src={settings.logoImage} alt={settings.siteName} /> : settings.logoText}</span>{settings.siteName}</a>
         <div className="nav-links">
           {NAV.map((n) => (
-            <a key={n.id} href={`#${n.id}`} className={active === n.id ? 'active' : ''}>{n.label}</a>
+            <a key={n.id} href={`#${n.id}`} className={active === n.id ? 'active' : ''}>{text(site, n.key)}</a>
           ))}
         </div>
         <div className="nav-actions">
@@ -72,10 +74,10 @@ function Navbar({ settings, theme, toggleTheme }) {
           <motion.div className="mobile-sheet" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
             <button className="icon-btn" style={{ position: 'absolute', top: 20, right: 20 }} onClick={() => setOpen(false)}><X size={20} /></button>
             {NAV.map((n) => (
-              <a key={n.id} href={`#${n.id}`} className={active === n.id ? 'active' : ''} onClick={() => setOpen(false)}>{n.label}</a>
+              <a key={n.id} href={`#${n.id}`} className={active === n.id ? 'active' : ''} onClick={() => setOpen(false)}>{text(site, n.key)}</a>
             ))}
             <a href="#contact" onClick={() => setOpen(false)}>{cta}</a>
-            <Link to="/admin" onClick={() => setOpen(false)}>Admin</Link>
+            <Link to="/admin" onClick={() => setOpen(false)}>{text(site, 'navAdmin')}</Link>
           </motion.div>
         )}
       </AnimatePresence>
@@ -90,6 +92,7 @@ function useTypewriter(words, speed = 90, pause = 1500) {
   const [del, setDel] = useState(false)
 
   useEffect(() => {
+    if (!words.length) return undefined
     const current = words[i % words.length]
     let timer
     if (!del && str === current) {
@@ -108,42 +111,38 @@ function useTypewriter(words, speed = 90, pause = 1500) {
   return str
 }
 
-const DEFAULT_ROLES = ['Full Stack Developer', 'MERN Specialist', 'React Engineer', 'API Builder']
-
 function Hero({ site }) {
   const hero = first(site, 'hero')
   const resume = first(site, 'resume').data
   const roles = asArray(hero.data.roles)
-  const role = useTypewriter(roles.length ? roles : DEFAULT_ROLES)
+  const role = useTypewriter(roles)
   const quickStats = (site.stat || []).slice(0, 3)
 
   return (
     <header className="hero" id="home">
       <div>
-        <motion.span className="hero-badge" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-          <span className="dot" /> {hero.data.badge || 'Available for freelance & full-time'}
-        </motion.span>
+        {hero.data.badge && (
+          <motion.span className="hero-badge" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            <span className="dot" /> {hero.data.badge}
+          </motion.span>
+        )}
         {hero.data.eyebrow && (
           <motion.span className="eyebrow hero-eyebrow" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.12 }}>{hero.data.eyebrow}</motion.span>
         )}
         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
-          <Heading>{hero.data.headline || 'I build fast, premium web products *end to end.*'}</Heading>
+          <Heading>{hero.data.headline}</Heading>
           <span className="role">{role}<span className="caret">|</span></span>
         </motion.h1>
         <motion.p className="lead" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
           {hero.data.description}
         </motion.p>
         <motion.div className="hero-actions" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
-          <a href="#work" className="btn primary">{hero.data.primaryCta || 'View My Work'} <ArrowRight size={18} /></a>
+          <a href="#work" className="btn primary">{hero.data.primaryCta} <ArrowRight size={18} /></a>
           {hero.data.secondaryCta && <a href="#contact" className="btn ghost">{hero.data.secondaryCta}</a>}
-          {resume.url && <a href={resume.url} target="_blank" rel="noreferrer" className="btn ghost"><Download size={17} /> {resume.label || 'Résumé'}</a>}
+          {resume.url && <a href={resume.url} target="_blank" rel="noreferrer" className="btn ghost"><Download size={17} /> {resume.label}</a>}
         </motion.div>
         <motion.div className="hero-quickstats" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-          {(quickStats.length ? quickStats : [
-            { _id: 'q1', data: { value: `${site.project?.length || 9}+`, label: 'Projects Built' } },
-            { _id: 'q2', data: { value: '1+', label: 'Years Coding' } },
-            { _id: 'q3', data: { value: '100%', label: 'Client Focus' } },
-          ]).map((s) => (
+          {quickStats.map((s) => (
             <div className="qs" key={s._id}><strong>{s.data.value || s.title}</strong><span>{s.data.label}</span></div>
           ))}
         </motion.div>
@@ -153,14 +152,18 @@ function Hero({ site }) {
         <span className="hero-orb a" />
         <span className="hero-orb b" />
         <div className="hero-photo">
-          <img src={hero.data.image || '/images/profile.jpg'} alt={hero.title || 'Mohd Zaid'} />
+          {hero.data.image && <img src={hero.data.image} alt={hero.title} />}
         </div>
-        <motion.div className="hero-float top glass" animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
-          <Code2 size={16} /> {hero.data.floatOne || 'Clean Code'}
-        </motion.div>
-        <motion.div className="hero-float bottom glass" animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-          <Zap size={16} /> {hero.data.floatTwo || 'Fast Delivery'}
-        </motion.div>
+        {hero.data.floatOne && (
+          <motion.div className="hero-float top glass" animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+            <Code2 size={16} /> {hero.data.floatOne}
+          </motion.div>
+        )}
+        {hero.data.floatTwo && (
+          <motion.div className="hero-float bottom glass" animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
+            <Zap size={16} /> {hero.data.floatTwo}
+          </motion.div>
+        )}
       </motion.div>
     </header>
   )
@@ -174,14 +177,7 @@ function parseStatValue(value) {
 
 function Stats({ site }) {
   const cmsStats = site.stat || []
-  const tiles = cmsStats.length
-    ? cmsStats.map((s) => ({ ...parseStatValue(s.data.value || s.title), label: s.data.label || s.title }))
-    : [
-        { to: site.project?.length || 9, suffix: '+', label: 'Projects Shipped' },
-        { to: site.skill?.reduce((n, s) => n + asArray(s.data.skills).length, 0) || 20, suffix: '+', label: 'Technologies' },
-        { to: 15, suffix: '+', label: 'Happy Clients' },
-        { to: 100, suffix: '%', label: 'Commitment' },
-      ]
+  const tiles = cmsStats.map((s) => ({ ...parseStatValue(s.data.value || s.title), label: s.data.label || s.title }))
   return (
     <section className="section" style={{ paddingBlock: 0 }}>
       <div className="container">
@@ -194,15 +190,15 @@ function Stats({ site }) {
 }
 
 /* ---------------- Projects ---------------- */
-function slugUrl(title = '') {
-  return `${title.toLowerCase().replace(/[^a-z0-9]+/g, '')}.vercel.app`
-}
+// Browser-frame address bar: show ONLY the real liveUrl hostname from the CMS.
+// If a project has no liveUrl we show its (DB) title rather than fabricating a
+// fake "<name>.vercel.app" domain — nothing on screen is invented in code.
 function displayUrl(project) {
   const u = project.data.liveUrl
   if (u && /^https?:\/\//i.test(u)) {
     try { return new URL(u).hostname.replace(/^www\./, '') } catch { /* fall through */ }
   }
-  return slugUrl(project.title)
+  return project.title
 }
 
 function BrowserFrame({ project }) {
@@ -230,18 +226,18 @@ function Projects({ site, onOpen }) {
   }, [projects])
   const [filter, setFilter] = useState('All')
   const shown = filter === 'All' ? projects : projects.filter((p) => asArray(p.data.stack).includes(filter))
-  const liveLabel = text(site, 'liveLabel', 'Live Demo')
-  const codeLabel = text(site, 'codeLabel', 'Code')
-  const detailsLabel = text(site, 'detailsLabel', 'Details')
-  const featuredLabel = text(site, 'featuredLabel', 'Featured')
+  const liveLabel = text(site, 'liveLabel')
+  const codeLabel = text(site, 'codeLabel')
+  const detailsLabel = text(site, 'detailsLabel')
+  const featuredLabel = text(site, 'featuredLabel')
 
   return (
     <section className="section" id="work">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">{text(site, 'workEyebrow', 'Selected Work')}</span>
-          <h2><Heading>{text(site, 'workTitle', "Projects I've *designed & shipped*")}</Heading></h2>
-          <p>{text(site, 'workSubtitle', 'A mix of full-stack apps, dashboards, and interfaces — click any project for details.')}</p>
+          <span className="eyebrow">{text(site, 'workEyebrow')}</span>
+          <h2><Heading>{text(site, 'workTitle')}</Heading></h2>
+          <p>{text(site, 'workSubtitle')}</p>
         </Reveal>
 
         <Reveal className="filter-bar" delay={0.1}>
@@ -345,8 +341,8 @@ function Skills({ site }) {
     <section className="section" id="skills">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">{text(site, 'skillsEyebrow', 'Toolbox')}</span>
-          <h2><Heading>{text(site, 'skillsTitle', 'Skills & *technologies*')}</Heading></h2>
+          <span className="eyebrow">{text(site, 'skillsEyebrow')}</span>
+          <h2><Heading>{text(site, 'skillsTitle')}</Heading></h2>
         </Reveal>
         <StaggerGroup className="skills-grid">
           {skills.map((group) => {
@@ -382,8 +378,8 @@ function Timeline({ site }) {
     <section className="section" id="about">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">{text(site, 'aboutEyebrow', 'About Me')}</span>
-          <h2><Heading>{text(site, 'aboutTitle', 'My journey so far')}</Heading></h2>
+          <span className="eyebrow">{text(site, 'aboutEyebrow')}</span>
+          <h2><Heading>{text(site, 'aboutTitle')}</Heading></h2>
           {about.summary && <p>{about.summary}</p>}
         </Reveal>
         {highlights.length > 0 && (
@@ -393,7 +389,7 @@ function Timeline({ site }) {
         )}
         <div className="timeline-wrap">
           <Reveal className="timeline-col">
-            <h3 className="col-title">{text(site, 'experienceTitle', 'Experience')}</h3>
+            <h3 className="col-title">{text(site, 'experienceTitle')}</h3>
             <div className="timeline">
               {exp.map((item) => (
                 <div className="timeline-item" key={item._id}>
@@ -409,7 +405,7 @@ function Timeline({ site }) {
             </div>
           </Reveal>
           <Reveal className="timeline-col" delay={0.1}>
-            <h3 className="col-title">{text(site, 'educationTitle', 'Education & Certificates')}</h3>
+            <h3 className="col-title">{text(site, 'educationTitle')}</h3>
             <div className="timeline">
               {edu.map((item) => (
                 <div className="timeline-item" key={item._id}>
@@ -421,7 +417,7 @@ function Timeline({ site }) {
                   <span className="org">{item.data.institution || item.data.issuer}</span>
                   {item.data.description && <p>{item.data.description}</p>}
                   {item.data.credentialUrl && item.data.credentialUrl !== '#' && (
-                    <a className="tl-link" href={item.data.credentialUrl} target="_blank" rel="noreferrer">View credential <ExternalLink size={13} /></a>
+                    <a className="tl-link" href={item.data.credentialUrl} target="_blank" rel="noreferrer">{text(site, 'viewCredentialLabel')} <ExternalLink size={13} /></a>
                   )}
                 </div>
               ))}
@@ -440,8 +436,8 @@ function Services({ site }) {
     <section className="section" id="services">
       <div className="container">
         <Reveal className="section-head center">
-          <span className="eyebrow">{text(site, 'servicesEyebrow', 'What I Do')}</span>
-          <h2><Heading>{text(site, 'servicesTitle', 'Services I *offer*')}</Heading></h2>
+          <span className="eyebrow">{text(site, 'servicesEyebrow')}</span>
+          <h2><Heading>{text(site, 'servicesTitle')}</Heading></h2>
         </Reveal>
         <StaggerGroup className="services-grid">
           {services.map((s, i) => {
@@ -469,8 +465,8 @@ function Testimonials({ site }) {
     <section className="section">
       <div className="container">
         <Reveal className="section-head center">
-          <span className="eyebrow">{text(site, 'testimonialsEyebrow', 'Testimonials')}</span>
-          <h2><Heading>{text(site, 'testimonialsTitle', "Kind words from *people I've worked with*")}</Heading></h2>
+          <span className="eyebrow">{text(site, 'testimonialsEyebrow')}</span>
+          <h2><Heading>{text(site, 'testimonialsTitle')}</Heading></h2>
         </Reveal>
         <StaggerGroup className="tst-grid">
           {list.map((t) => (
@@ -495,13 +491,13 @@ function Testimonials({ site }) {
 function Blog({ site, onOpen }) {
   const posts = site.blog || []
   if (!posts.length) return null
-  const readMore = text(site, 'readMoreLabel', 'Read more')
+  const readMore = text(site, 'readMoreLabel')
   return (
     <section className="section" id="blog">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">{text(site, 'blogEyebrow', 'Writing')}</span>
-          <h2><Heading>{text(site, 'blogTitle', 'From the *blog*')}</Heading></h2>
+          <span className="eyebrow">{text(site, 'blogEyebrow')}</span>
+          <h2><Heading>{text(site, 'blogTitle')}</Heading></h2>
         </Reveal>
         <StaggerGroup className="blog-grid">
           {posts.map((post) => {
@@ -541,7 +537,7 @@ function Contact({ site }) {
     setSending(true)
     try {
       await api.post('/public/contact', form)
-      toast.success("Message sent — I'll get back to you soon!")
+      toast.success(text(site, 'formSuccessMessage'))
       setForm({ name: '', email: '', subject: '', message: '', website: '' })
     } catch (err) {
       toast.error(getErrorMessage(err))
@@ -555,13 +551,13 @@ function Contact({ site }) {
       <div className="container">
         <div className="contact-grid">
           <Reveal className="contact-info">
-            <span className="eyebrow">{text(site, 'contactEyebrow', 'Get in touch')}</span>
-            <h2><Heading>{text(site, 'contactTitle', "Let's build something *great together*")}</Heading></h2>
-            <p>{text(site, 'contactSubtitle', 'Have a project in mind or just want to say hi? My inbox is always open.')}</p>
+            <span className="eyebrow">{text(site, 'contactEyebrow')}</span>
+            <h2><Heading>{text(site, 'contactTitle')}</Heading></h2>
+            <p>{text(site, 'contactSubtitle')}</p>
             <div className="contact-lines">
-              {contact.email && <a className="contact-line" href={`mailto:${contact.email}`}><span className="ic"><Mail size={18} /></span><div><small>Email</small><strong>{contact.email}</strong></div></a>}
-              {contact.phone && <div className="contact-line"><span className="ic"><Phone size={18} /></span><div><small>Phone</small><strong>{contact.phone}</strong></div></div>}
-              {contact.location && <div className="contact-line"><span className="ic"><MapPin size={18} /></span><div><small>Location</small><strong>{contact.location}</strong></div></div>}
+              {contact.email && <a className="contact-line" href={`mailto:${contact.email}`}><span className="ic"><Mail size={18} /></span><div><small>{text(site, 'contactEmailLabel')}</small><strong>{contact.email}</strong></div></a>}
+              {contact.phone && <div className="contact-line"><span className="ic"><Phone size={18} /></span><div><small>{text(site, 'contactPhoneLabel')}</small><strong>{contact.phone}</strong></div></div>}
+              {contact.location && <div className="contact-line"><span className="ic"><MapPin size={18} /></span><div><small>{text(site, 'contactLocationLabel')}</small><strong>{contact.location}</strong></div></div>}
             </div>
             <div className="socials">
               {socials.map((s) => (
@@ -574,12 +570,12 @@ function Contact({ site }) {
             <form className="form glass" onSubmit={submit}>
               <input className="hp-field" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} />
               <div className="form-row">
-                <div className="field"><label>Name</label><input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" /></div>
-                <div className="field"><label>Email</label><input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@email.com" /></div>
+                <div className="field"><label>{text(site, 'formNameLabel')}</label><input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={text(site, 'formNamePlaceholder')} /></div>
+                <div className="field"><label>{text(site, 'formEmailLabel')}</label><input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder={text(site, 'formEmailPlaceholder')} /></div>
               </div>
-              <div className="field"><label>Subject</label><input required value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="What's this about?" /></div>
-              <div className="field"><label>Message</label><textarea required minLength={10} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell me about your project..." /></div>
-              <button className="btn primary" disabled={sending} style={{ width: '100%' }}>{sending ? 'Sending...' : <>Send Message <Send size={17} /></>}</button>
+              <div className="field"><label>{text(site, 'formSubjectLabel')}</label><input required value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder={text(site, 'formSubjectPlaceholder')} /></div>
+              <div className="field"><label>{text(site, 'formMessageLabel')}</label><textarea required minLength={10} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder={text(site, 'formMessagePlaceholder')} /></div>
+              <button className="btn primary" disabled={sending} style={{ width: '100%' }}>{sending ? text(site, 'formSendingLabel') : <>{text(site, 'formSendLabel')} <Send size={17} /></>}</button>
             </form>
           </Reveal>
         </div>
@@ -596,17 +592,17 @@ function Footer({ site }) {
     <footer className="footer">
       <div className="container">
         <div className="footer-inner">
-          <a href="#home" className="brand"><span className="logo"><img src={settings.logoImage || '/favicon.png'} alt={settings.siteName || 'Mohd Zaid'} /></span>{settings.siteName || 'Mohd Zaid'}</a>
+          <a href="#home" className="brand"><span className="logo">{settings.logoImage ? <img src={settings.logoImage} alt={settings.siteName} /> : settings.logoText}</span>{settings.siteName}</a>
           <div className="footer-links">
-            {NAV.map((n) => <a key={n.id} href={`#${n.id}`}>{n.label}</a>)}
-            <Link to="/admin">Admin</Link>
+            {NAV.map((n) => <a key={n.id} href={`#${n.id}`}>{text(site, n.key)}</a>)}
+            <Link to="/admin">{text(site, 'navAdmin')}</Link>
           </div>
           <div className="footer-links">
             {socials.map((s) => <a key={s._id} href={s.data.url} target="_blank" rel="noreferrer">{s.data.platform}</a>)}
           </div>
         </div>
         <div className="footer-bottom">
-          © {new Date().getFullYear()} {settings.siteName || 'Mohd Zaid'}. {settings.footerText || 'Built with the MERN stack.'}
+          {settings.footerText}
         </div>
       </div>
     </footer>
@@ -648,8 +644,8 @@ export default function PublicSite({ site, loading, theme, toggleTheme }) {
     tags: asArray(p.data.stack),
     body: p.data.description,
     actions: [
-      p.data.liveUrl && p.data.liveUrl !== '#' && { label: text(site, 'liveLabel', 'Live Demo'), href: p.data.liveUrl, primary: true, icon: <ArrowUpRight size={17} /> },
-      p.data.githubUrl && p.data.githubUrl !== '#' && { label: 'Source Code', href: p.data.githubUrl, icon: <GithubIcon size={17} /> },
+      p.data.liveUrl && p.data.liveUrl !== '#' && { label: text(site, 'liveLabel'), href: p.data.liveUrl, primary: true, icon: <ArrowUpRight size={17} /> },
+      p.data.githubUrl && p.data.githubUrl !== '#' && { label: text(site, 'codeLabel'), href: p.data.githubUrl, icon: <GithubIcon size={17} /> },
     ].filter(Boolean),
   })
   const openPost = (post) => setModal({
@@ -661,11 +657,11 @@ export default function PublicSite({ site, loading, theme, toggleTheme }) {
 
   return (
     <>
-      <Navbar settings={settings} theme={theme} toggleTheme={toggleTheme} />
+      <Navbar site={site} settings={settings} theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero site={site} />
         {techWords.length > 0 && <Marquee items={techWords} />}
-        {loading && <div className="notice">Syncing live CMS content…</div>}
+        {loading && <div className="notice">{text(site, 'syncingLabel')}</div>}
         <Stats site={site} />
         <Projects site={site} onOpen={openProject} />
         <Skills site={site} />

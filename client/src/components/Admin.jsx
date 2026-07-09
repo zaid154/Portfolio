@@ -9,7 +9,7 @@ import {
   Sun, Moon, Copy, ChevronUp, ChevronDown, ExternalLink, Eye, EyeOff, AlertTriangle, Type,
 } from 'lucide-react'
 import { api, getErrorMessage } from '../lib/api'
-import { contentTypes } from '../lib/site'
+import { contentTypes } from '../lib/contentTypes'
 
 const TOKEN_KEY = 'portfolio_admin_token'
 const MULTILINE = ['description', 'summary', 'content', 'quote', 'highlights', 'points', 'skills', 'stack', 'workSubtitle', 'contactSubtitle']

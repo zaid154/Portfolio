@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { api } from './api'
-import { fallbackSite } from './site'
 
-// Load CMS content from the API, falling back to rich local content offline.
+// Load CMS content from the API. The database is the SINGLE source of truth:
+// whatever is seeded (`npm run seed`) or added/edited in the admin dashboard is
+// exactly what renders here. There is no hardcoded fallback content — an empty
+// DB simply shows empty sections.
 export function useSite() {
-  const [site, setSite] = useState(fallbackSite)
+  const [site, setSite] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -13,13 +15,9 @@ export function useSite() {
       try {
         const { data } = await api.get('/public/site')
         if (!alive) return
-        const dbSite = data.site || {}
-        // Once the CMS has any published content it is the source of truth — so a
-        // section the owner hid (all drafts) correctly shows nothing, not the demo.
-        // The rich fallback is only used before the site is seeded (empty DB).
-        setSite(Object.keys(dbSite).length ? dbSite : fallbackSite)
+        setSite(data.site || {})
       } catch {
-        if (alive) setSite(fallbackSite)
+        if (alive) setSite({})
       } finally {
         if (alive) setLoading(false)
       }
