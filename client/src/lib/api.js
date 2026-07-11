@@ -1,7 +1,10 @@
 import axios from 'axios'
 
+// In dev, VITE_API_URL is unset → the relative '/api' hits the Vite proxy (same origin,
+// no CORS). In production it's set at build time to the deployed backend, e.g.
+// https://<your-render-service>.onrender.com/api (Vercel), or '/api' for a same-origin deploy.
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
 })
 
 api.interceptors.request.use((config) => {

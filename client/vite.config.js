@@ -1,16 +1,92 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import http from 'http'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+// Portfolio repo root (parent of client/) — where the backend writes .dev-server.json.
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+
+// The backend prefers port 5000 but falls back if it's busy, writing its real port
+// to .dev-server.json. Read it fresh on every request so the dev proxy always points
+// at the running API — no restart needed, and no startup race (defaults to 5000 until
+// the file appears).
+function backendPort() {
+  try {
+    const { port } = JSON.parse(fs.readFileSync(path.join(rootDir, '.dev-server.json'), 'utf8'))
+    if (port) return Number(port)
+  } catch {
+    /* file not written yet → fall back to the preferred port */
+  }
+  return 5000
+}
+
+// Forward /api/* to the backend so the browser only ever talks to the Vite origin.
+// This eliminates dev CORS entirely and makes the client immune to backend port drift.
+function devApiProxy() {
+  return {
+    name: 'dev-api-proxy',
+    configureServer(server) {
+      server.middlewares.use('/api', (req, res) => {
+        const port = backendPort()
+        const proxyReq = http.request(
+          {
+            host: '127.0.0.1',
+            port,
+            method: req.method,
+            path: req.originalUrl || req.url,
+            headers: req.headers,
+          },
+          (proxyRes) => {
+            res.writeHead(proxyRes.statusCode || 502, proxyRes.headers)
+            proxyRes.pipe(res)
+          }
+        )
+        proxyReq.on('error', (err) => {
+          res.statusCode = 502
+          res.setHeader('Content-Type', 'application/json')
+          res.end(
+            JSON.stringify({
+              success: false,
+              message: `Dev proxy: cannot reach the API on port ${port}. Is the backend running? (${err.code || err.message})`,
+            })
+          )
+        })
+        req.pipe(proxyReq)
+      })
+    },
+  }
+}
+
+// Print a clear, unambiguous frontend URL once Vite has bound its (possibly
+// fallen-back) port — so there's never confusion about where the client is.
+function frontendBanner() {
+  return {
+    name: 'frontend-banner',
+    configureServer(server) {
+      server.httpServer?.once('listening', () => {
+        const addr = server.httpServer.address()
+        const port = typeof addr === 'object' && addr ? addr.port : addr
+        const line = '=============================='
+        // eslint-disable-next-line no-console
+        console.log('\n' + [line, 'Frontend Running', line, `http://localhost:${port}`, line].join('\n') + '\n')
+      })
+    },
+  }
+}
 
 export default defineConfig({
   envDir: '../',
-  plugins: [react()],
-  // Fixed dev port (5173 is taken by the local "mockmate" project). strictPort so
-  // it fails loudly instead of silently drifting to another port — which would
-  // break CORS, since the API only allows the CLIENT_URL origin.
+  plugins: [react(), devApiProxy(), frontendBanner()],
+  // Prefer 5173; if it's busy Vite automatically uses the next free port (5174, …)
+  // and the banner above reports the actual URL. No strictPort — we want graceful
+  // fallback, not a hard failure.
   server: {
-  port: 5174,
-  strictPort: true,
-},
+    port: 5173,
+    strictPort: false,
+    host: true,
+  },
   build: {
     chunkSizeWarningLimit: 900,
     rollupOptions: {

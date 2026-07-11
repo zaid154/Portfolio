@@ -798,6 +798,8 @@ a.contact-line:hover { transform: translateX(3px); }
 /* Overview */
 .overview { display: grid; gap: 20px; }
 .overview .admin-stats { margin-bottom: 0; }
+.account { display: grid; gap: 20px; max-width: 720px; }
+.account .fields { display: grid; gap: 14px; }
 .admin-stats button.astat { cursor: pointer; text-align: left; transition: border-color 0.2s, transform 0.15s; }
 .admin-stats button.astat:hover { border-color: var(--accent); transform: translateY(-2px); }
 .ov-msgs { display: grid; gap: 8px; }

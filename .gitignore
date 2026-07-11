@@ -1,6 +1,7 @@
 node_modules
 dist
 .env
+.dev-server.json
 .DS_Store
 
 # Separate workspace that lives inside this folder — not part of the portfolio repo.

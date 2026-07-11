@@ -3,24 +3,30 @@ services:
     name: portfolio-cms-api
     env: node
     plan: free
-    # Install every workspace and build the React client so the server can serve client/dist.
-    buildCommand: npm install && npm install --prefix client && npm install --prefix server && npm run build
+    # Backend-only: the React client is deployed separately on Vercel. Render only
+    # installs and runs the Express API. (app.js still serves client/dist if present,
+    # which is a harmless no-op here since we don't build the client on Render.)
+    buildCommand: npm install --prefix server
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      # The built frontend calls the API on the same origin.
-      - key: VITE_API_URL
-        value: /api
+      # CORS allow-list — set to your Vercel URL(s), comma-separated. *.vercel.app
+      # preview deployments are always allowed by the API, so this is your prod domain.
+      # e.g. https://mohd-zaid-portfolio.vercel.app
       - key: CLIENT_URL
         sync: false
       - key: MONGO_URI
         sync: false
       - key: JWT_SECRET
         sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
       - key: CLOUDINARY_CLOUD_NAME
         sync: false
       - key: CLOUDINARY_API_KEY
         sync: false
       - key: CLOUDINARY_API_SECRET
         sync: false
+      - key: CLOUDINARY_FOLDER
+        value: portfolio-cms

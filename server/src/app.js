@@ -19,6 +19,36 @@ import { sanitize } from './middleware/sanitize.js'
 
 const app = express()
 
+// CORS allow-list. Requests with no Origin (curl, health checks, same-origin) always
+// pass. In development any localhost/127.0.0.1 origin is allowed, so the client can
+// run on 5173, 5174, … without CORS breaking. In production we allow the origins in
+// CLIENT_URL (comma-separated) plus any *.vercel.app host, covering the production
+// Vercel domain and its preview deployments.
+const clientAllowList = env.clientUrl
+  .split(',')
+  .map((s) => s.trim().replace(/\/$/, ''))
+  .filter(Boolean)
+
+function corsOrigin(origin, callback) {
+  if (!origin) return callback(null, true)
+
+  let host = ''
+  try {
+    host = new URL(origin).hostname
+  } catch {
+    return callback(new Error(`Invalid Origin: ${origin}`))
+  }
+
+  const isLocalhost = host === 'localhost' || host === '127.0.0.1' || host === '::1'
+  if (env.nodeEnv !== 'production' && isLocalhost) return callback(null, true)
+
+  const normalized = origin.replace(/\/$/, '')
+  const allowed = clientAllowList.includes(normalized) || /\.vercel\.app$/i.test(host)
+  if (allowed) return callback(null, true)
+
+  return callback(new Error(`Origin not allowed by CORS: ${origin}`))
+}
+
 // Behind a reverse proxy in production (e.g. Render) the socket IP is the proxy, not
 // the visitor. Trust the first hop so req.ip is the real client IP — otherwise every
 // request shares one key and the rate limiters throttle all users together (and a
@@ -41,7 +71,7 @@ app.use(
 )
 app.use(
   cors({
-    origin: env.clientUrl,
+    origin: corsOrigin,
     credentials: true,
   })
 )
